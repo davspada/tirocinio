@@ -1,0 +1,16 @@
+{
+    "cameras":[
+        {
+            "ip": "172.16.1.69",
+            "port": "8000",
+            "user": "admin",
+            "passw": "password"
+        },
+        {
+            "ip": "172.16.1.69",
+            "port": "8000",
+            "user": "admin",
+            "passw": "password"
+        }
+    ]
+}

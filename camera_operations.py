@@ -1,0 +1,55 @@
+from collections import namedtuple
+import json
+from traceback import print_list
+from numpy import size
+from onvif import ONVIFCamera
+
+ip = '172.16.1.69'
+port = '8000'
+user = 'admin'
+passw = 'password'
+
+class Camera:
+  def __init__(self, ip, port, user, passw):
+    self.ip = ip
+    self.port = port
+    self.user = user
+    self.passw = passw
+
+
+def populate_camera_list(cam_list):
+    with open('cameras.json') as json_file:
+        data = json.load(json_file)
+        for i in data['cameras']:
+            cam = Camera(i["ip"], i["port"], i["user"],i["passw"])
+            cam_list.append(cam)
+
+
+def appendCredencials(pre_uri, username, password):
+    return 'rtsp://'+username+':'+password+'@'+ip
+
+def connectCamera(ip, port, user, passw):
+    cam = ONVIFCamera(ip,port, user, passw)
+    resp = cam.devicemgmt.GetHostname()
+    print('Connected to cam : ' +ip+' - Hostname : '+str(resp))
+    return cam
+
+
+def getStreamLink(ip, port, user, passw):
+    cam = connectCamera(ip, port, user, passw)
+    mediaService = cam.create_media_service()
+    media_profiles = mediaService.GetProfiles()
+    token = media_profiles[0].token
+    uri = mediaService.GetStreamUri({'StreamSetup':{'Stream':'RTP-Unicast','Transport':'UDP'},'ProfileToken':token})
+    prefactor_uri = uri['Uri']
+    #print(prefactor_uri)
+    final_uri = appendCredencials(prefactor_uri,user,passw)
+    print('Stream link : '+final_uri)
+    return final_uri
+
+
+if __name__ == '__main__':
+    camera_list = []
+    populate_camera_list(camera_list)
+    for c in camera_list:
+        print(c.ip+c.port+c.user+c.passw)
