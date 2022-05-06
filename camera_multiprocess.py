@@ -14,16 +14,17 @@ def add_metadata(frame):
     position = "lat 10 long 20"
     return Frame_data(frame, timestamp, position)
 
+
+#gets stream link, starts the capture, adds metadata to each frame and sends it to the queue
 def camera_process_func(queue, ip, port, user, password):
     cam_link = camera_operations.getStreamLink(ip, port, user, password)
     cap = cv2.VideoCapture(str(cam_link))
-    while(True):
+    #while(True):
+    for i in range(30):
         ret, frame = cap.read()
         frame = cv2.resize(frame, (0, 0), fx=0.25, fy=0.25)
         data_for_consumer = add_metadata(frame)
-        print(data_for_consumer.timestamp, data_for_consumer.position)
-        #cv2.imshow('frame',frame)
-        #cv2.imwrite('frames/gr'+str(i)+'.jpg', frame)
+        queue.put(data_for_consumer)
         if cv2.waitKey(1) & 0xFF == ord('q'):
             break
 
