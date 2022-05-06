@@ -1,3 +1,4 @@
+import os
 import time
 import cv2
 import camera_operations
@@ -19,12 +20,15 @@ def add_metadata(frame):
 def camera_process_func(queue, ip, port, user, password):
     cam_link = camera_operations.getStreamLink(ip, port, user, password)
     cap = cv2.VideoCapture(str(cam_link))
-    #while(True):
-    for i in range(30):
+    print(cap.set(cv2.CAP_PROP_FPS,10 ))
+    print("PROCESS {} STARTED ---- CAM : {}".format(os.getpid(), ip))
+    while(True):
+    #for i in range(30):
         ret, frame = cap.read()
-        frame = cv2.resize(frame, (0, 0), fx=0.25, fy=0.25)
         data_for_consumer = add_metadata(frame)
-        queue.put(data_for_consumer)
+        frame = cv2.resize(frame,(0,0), fx=0.25,fy=0.25)
+        cv2.imshow('frame',frame)
+        #queue.put(data_for_consumer)
         if cv2.waitKey(1) & 0xFF == ord('q'):
             break
 

@@ -9,7 +9,7 @@ camera_list = []
 populate_camera_list(camera_list)
 
 for camera in camera_list:
-    print("trying to access ---"+camera.ip+ camera.port+ camera.user+camera.passw)
+    #print("trying to access ---"+camera.ip+ camera.port+ camera.user+camera.passw)
     proc = multiprocessing.Process(target = camera_multiprocess.camera_process_func,args=(queue_mp, camera.ip, camera.port, camera.user, camera.passw))
     processes_list.append(proc)
 
