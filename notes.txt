@@ -80,9 +80,18 @@ nice comando x aumentare priorità
 produttore inserisce dati + metadati in coda (singola x tutti i produttori)--->
 ---> coda li passa al consumatore che li salva in locale
 
-il numero di consumatori inizialmente è prop ai produttori ma potrebbe esserne distaccato
+il numero di consumatori inizialmente è proporzionale ai produttori ma potrebbe esserne distaccato
 
 
 i dati passati alla coda sono : frame - timestamp - posizione
 
 il consumatore salva questi dati andando a creare cartelle che precisano il mese / giorno / ora / minuto e così via per essere più facilmente ricercabili
+
+passo il frame ottenuto dalla cattura così com'è e lo faccio salvare in locale
+direttamente dal consumatore, in modo da ridurre il lavoro del produttore che lo sta catturando
+al frame aggiungo i metadati che mi servono e li passo alla queue
+
+il consumatore legge il pacchetto di dati, legge i metadati, controlla se esiste il path:
+se esiste salva il pacchetto dati, altrimenti crea il path e poi lo salva
+- i consumatori fanno infinitamente un check se la lista è vuota, quando non lo è prendono il dato
+    (qui c'è da provare se effettivamente c'è bisogno o meno di un semaforo per put/get)
