@@ -1,0 +1,88 @@
+Cattura con parametri (fps)
+Time-stamping
+Storicizzazione in coda
+posizione ip o seriale
+in seguito alla storicizzazione, analisi del video
+
+priorità informazione (questione ultimi fotogrammi/ scartare quelli vecchi)
+ragionare sui requisiti in funzione dei test, anche automatizzati
+
+Il seguente lavoro di tesi si colloca nell’ambito di un’attività di tirocinio che consiste nella partecipazione a un progetto di sviluppo software nell'ambito dei servizi internet e per sistemi che operano nel campo dei servizi marittimi.
+
+La problematica che viene affrontata nella durata dell’attività di tirocinio riguarda l’acquisizione di dati provenienti da IP Camera/WebCam e annessi metadati, la loro storicizzazione e successivamente, la possibilità di poterne effettuare la visualizzazione e la ricerca.
+
+La cattura verrà effettuata utilizzando la libreria open source OpenCV.
+Le immagini verranno poi arricchite dei metadati quali la marcatura temporale relativa all’ istante di acquisizione e la posizione geografica prelevate da sistema GPS e/o la rete dati.
+I dati verranno poi inseriti in una coda, andando ad affrontare il problema “produttore/consumatore” : la coda verrà realizzata con un in-memory database (scelta determinata dalle esigenze in merito alla performance della soluzione) tramite Redis.
+In seguito alla storicizzazione verrà composto il video grazie ai frame e gli annessi metadati precedentemente trattati.
+Il video potrà poi essere analizzato in base alle necessità e i diversi parametri.
+
+
+SCELTA THREADING LIBRARY PYTHON
+What's the difference between Python threading and multiprocessing?
+With threading, concurrency is achieved using multiple threads, but due to the GIL only one thread can be running at a time. In multiprocessing, the original process is forked process into multiple child processes bypassing the GIL. Each child process will have a copy of the entire program's memory.
+
+Both multithreading and multiprocessing allow Python code to run concurrently. Only multiprocessing will allow your code to be truly parallel. However, if your code is IO-heavy (like HTTP requests), then multithreading will still probably speed up your code.
+
+you can use threading if your program is network bound or multiprocessing if it's CPU bound.
+
+Threading is game-changing because many scripts related to network/data I/O spend the majority of their time waiting for data from a remote source. Because downloads might not be linked (i.e., scraping separate websites), the processor can download from different data sources in parallel and combine the result at the end. For CPU intensive processes, there is little benefit to using the threading module.
+
+What Is Multiprocessing? How Is It Different Than Threading?
+Without multiprocessing, Python programs have trouble maxing out your system's specs because of the GIL (Global Interpreter Lock). Python wasn't designed considering that personal computers might have more than one core (shows you how old the language is), so the GIL is necessary because Python is not thread-safe and there is a globally enforced lock when accessing a Python object. Though not perfect, it's a pretty effective mechanism for memory management. What can we do?
+Multiprocessing allows you to create programs that can run concurrently (bypassing the GIL) and use the entirety of your CPU core. Though it is fundamentally different from the threading library, the syntax is quite similar. The multiprocessing library gives each process its own Python interpreter and each their own GIL.
+Because of this, the usual problems associated with threading (such as data corruption and deadlocks) are no longer an issue. Since the processes don't share memory, they can't modify the same memory concurrently.
+
+What Should You Use?
+If your code has a lot of I/O or Network usage:
+Multithreading is your best bet because of its low overhead
+If you have a GUI
+Multithreading so your UI thread doesn't get locked up
+If your code is CPU bound:
+You should use multiprocessing (if your machine has multiple cores)
+
+The threading module uses threads, the multiprocessing module uses processes. The difference is that threads run in the same memory space, while processes have separate memory. This makes it a bit harder to share objects between processes with multiprocessing. Since threads use the same memory, precautions have to be taken or two threads will write to the same memory at the same time. This is what the global interpreter lock is for.
+Spawning processes is a bit slower than spawning threads.
+
+Multiprocessing
+Pros
+Separate memory space
+Code is usually straightforward
+Takes advantage of multiple CPUs & cores
+Avoids GIL limitations for cPython
+Eliminates most needs for synchronization primitives unless if you use shared memory (instead, it's more of a communication model for IPC)
+Child processes are interruptible/killable
+Python multiprocessing module includes useful abstractions with an interface much like threading.Thread
+A must with cPython for CPU-bound processing
+Cons
+IPC a little more complicated with more overhead (communication model vs. shared memory/objects)
+Larger memory footprint
+Threading
+Pros
+Lightweight - low memory footprint
+Shared memory - makes access to state from another context easier
+Allows you to easily make responsive UIs
+cPython C extension modules that properly release the GIL will run in parallel
+Great option for I/O-bound applications
+Cons
+cPython - subject to the GIL
+Not interruptible/killable
+If not following a command queue/message pump model (using the Queue module), then manual use of synchronization primitives become a necessity (decisions are needed for the granularity of locking)
+Code is usually harder to understand and to get right - the potential for race conditions increases dramatically
+nice comando x aumentare priorità
+
+
+
+
+
+
+
+produttore inserisce dati + metadati in coda (singola x tutti i produttori)--->
+---> coda li passa al consumatore che li salva in locale
+
+il numero di consumatori inizialmente è prop ai produttori ma potrebbe esserne distaccato
+
+
+i dati passati alla coda sono : frame - timestamp - posizione
+
+il consumatore salva questi dati andando a creare cartelle che precisano il mese / giorno / ora / minuto e così via per essere più facilmente ricercabili
