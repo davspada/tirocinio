@@ -6,15 +6,15 @@ import numpy as np
 import requests
 from requests.auth import HTTPDigestAuth
 
-ip = '172.16.1.69'
+ip = '172.16.1.70'
 port = '8000'
-user = 'admin'
-passw = 'password'
+user = 'Admin'
+passw = '123456'
 
 cam = ONVIFCamera(ip,port, user, passw)
 # Get Hostname
 resp = cam.devicemgmt.GetHostname()
-#print('My camera`s hostname: ' + str(resp.Name))
+print('My camera`s hostname: ' + str(resp.Name))
 
 mediaService = cam.create_media_service()
 media_profiles = mediaService.GetProfiles()
@@ -43,7 +43,6 @@ while(True):
 
 cap.release()
 cv2.destroyAllWindows()
-
 
 
 #cap = cv2.VideoCapture('rtsp://admin:password@172.16.1.69//h264Preview_01_main')                   #reolink

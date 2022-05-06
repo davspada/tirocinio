@@ -14,5 +14,3 @@ def camera_process_func(ip, port, user, password):
 
     cap.release()
     cv2.destroyAllWindows()
-
-
