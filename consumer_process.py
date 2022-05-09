@@ -1,4 +1,6 @@
+from datetime import date
 import os
+from time import strftime
 import cv2
 
 def process_data(queue):
@@ -6,6 +8,8 @@ def process_data(queue):
     while(True):
         if not queue.empty():
             data = queue.get()
+            name = data.name
             ts = data.timestamp
-            cv2.imwrite('frames/'+str(ts)+'.jpg', data.frame)
-            print("file written --- "+str(ts))
+            ts.strftime("%m/%d/%Y-%H:%M:%-S")
+            #IP YEAR MONTH DAY HOUR 
+            cv2.imwrite("frames/"+str(name)+"/"+str(ts)+".jpg", data.frame)

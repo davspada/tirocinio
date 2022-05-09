@@ -37,9 +37,9 @@ def getStreamLink(ip, port, user, passw):
     token = media_profiles[0].token
     uri = mediaService.GetStreamUri({'StreamSetup':{'Stream':'RTP-Unicast','Transport':'UDP'},'ProfileToken':token})
     prefactor_uri = uri['Uri']
-    print(prefactor_uri)
+    #print(prefactor_uri)
     final_uri = appendCredencials(prefactor_uri,user,passw,ip)
-    print('Stream link : '+final_uri)
+    #print('Stream link : '+final_uri)
     return final_uri
 
 

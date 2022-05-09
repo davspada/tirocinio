@@ -1,9 +1,7 @@
 from datetime import datetime
-import os
 import time
 import cv2
-import camera_operations
-
+import numpy as np
 
 class Frame_data:
   def __init__(self, frame, timestamp, position, name):
@@ -12,13 +10,10 @@ class Frame_data:
     self.position = position
     self.name = name
 
-#gets stream link, starts the capture, adds metadata to each frame and sends it to the queue
-def camera_process_func(queue, ip, port, user, password, name):
-    cam_link = camera_operations.getStreamLink(ip, port, user, password)
-    cap = cv2.VideoCapture(str(cam_link))
-    print("PROCESS {} STARTED ---- CAM : {}".format(os.getpid(), ip))
-    
-    #FPS = 1/TIMEOUT
+name = '17216169'
+
+cap = cv2.VideoCapture('rtsp://admin:password@172.16.1.69')                   #reolink
+while(True):
     TIMEOUT = .1
     position = "lat 10 long 20"  #position placeholder
     old_timestamp = time.time()
@@ -29,8 +24,12 @@ def camera_process_func(queue, ip, port, user, password, name):
             frame = cv2.resize(frame,(0,0), fx=0.25,fy=0.25)
             data_for_consumer = Frame_data(frame, timestamp, position, name)
             #cv2.imshow(name,frame)
-            queue.put(data_for_consumer)
             old_timestamp = time.time()
+            name = data_for_consumer.name
+            ts = data_for_consumer.timestamp
+            ts.strftime("%m/%d/%Y-%H:%M:%-S")
+            #IP YEAR MONTH DAY HOUR 
+            cv2.imwrite("frames/"+str(name)+"/"+str(ts)+".jpg", data_for_consumer.frame)
             if cv2.waitKey(1) & 0xFF == ord('q'):
                 print("CAMERA STOPPED")
                 break
