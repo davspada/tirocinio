@@ -23,8 +23,8 @@ def camera_process_func(queue, ip, port, user, password, name):
     position = "lat 10 long 20"  #position placeholder
     old_timestamp = time.time()
     while(True):
+        ret, frame = cap.read()
         timestamp = datetime.now()
-        frame = cap.read()
         if (time.time() - old_timestamp) > TIMEOUT:
             frame = cv2.resize(frame,(0,0), fx=0.25,fy=0.25)
             data_for_consumer = Frame_data(frame, timestamp, position, name)
