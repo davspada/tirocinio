@@ -30,6 +30,7 @@ def camera_process_func(queue, ip, port, user, password, name):
             data_for_consumer = Frame_data(frame, timestamp, position, name)
             #cv2.imshow(name,frame)
             queue.put(data_for_consumer)
+            print(time.time()-old_timestamp)
             old_timestamp = time.time()
             if cv2.waitKey(1) & 0xFF == ord('q'):
                 print("CAMERA STOPPED")
