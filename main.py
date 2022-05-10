@@ -8,13 +8,19 @@ camera_list = []
 
 populate_camera_list(camera_list)
 
+def choose_cons_number():
+    print("inserire il numero di consumatori :")
+    cons = int(input())
+    return cons
+
 for camera in camera_list:
     #print("trying to access ---"+camera.ip+ camera.port+ camera.user+camera.passw)
     name = camera.ip.replace(".","")
     proc = multiprocessing.Process(target = camera_multiprocess.camera_process_func,args=(queue_mp, camera.ip, camera.port, camera.user, camera.passw, name))
     processes_list.append(proc)
 
-for i in range(2):
+cn = choose_cons_number()
+for i in range(cn):
     cons = multiprocessing.Process(target=consumer_process.process_data,args=(queue_mp, ))
     processes_list.append(cons)
 
