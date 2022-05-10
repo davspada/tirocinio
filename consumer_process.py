@@ -13,3 +13,11 @@ def process_data(queue):
             ts.strftime("%m/%d/%Y-%H:%M:%-S")
             #IP YEAR MONTH DAY HOUR 
             cv2.imwrite("frames/"+str(name)+"/"+str(ts)+".jpg", data.frame)
+
+
+#check se folder esiste  ---> si ---> piazza
+#                        ---> no ---> crea ---> piazza
+
+#creo prima la stringa a partire dal timestamp + nome della cam
+#   ---> la uso per controllare il path se esiste o no
+#   ---> eventualmente la uso anche per il imwrite
