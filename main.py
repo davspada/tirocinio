@@ -19,7 +19,8 @@ for camera in camera_list:
     proc = multiprocessing.Process(target = camera_multiprocess.camera_process_func,args=(queue_mp, camera.ip, camera.port, camera.user, camera.passw, name))
     processes_list.append(proc)
 
-cn = choose_cons_number()
+#cn = choose_cons_number()
+cn = 2
 for i in range(cn):
     cons = multiprocessing.Process(target=consumer_process.process_data,args=(queue_mp, ))
     processes_list.append(cons)
