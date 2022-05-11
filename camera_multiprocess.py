@@ -25,9 +25,10 @@ def thread_func(cap,queue1, queue2, name, timestamp, position):
 #gets stream link, starts the capture, adds metadata to each frame and sends it to the queue
 def camera_process_func(queue, ip, port, user, password, name):
     cam_link = camera_operations.getStreamLink(ip, port, user, password)
-    cap = cv2.VideoCapture(str(cam_link))
+    cap = cv2.VideoCapture(str(cam_link),cv2.CAP_FFMPEG)
     print("PROCESS {} STARTED ---- CAM : {}".format(os.getpid(), ip))
-    #queue2 = multiprocessing.Queue()
+    print("FPS ----- "+str(cap.get(cv2.CAP_PROP_FPS)))
+    queue2 = multiprocessing.Queue()
     #FPS = 1/TIMEOUT
     TIMEOUT = .1
     position = "lat 10 long 20"  #position placeholder

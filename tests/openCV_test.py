@@ -1,10 +1,7 @@
 import cv2
 import numpy as np
 
-cap = cv2.VideoCapture(0)                   #reolink
-#cap = cv2.VideoCapture('http://172.16.1.70:7070/cgi-bin/encoder?USER=Admin&PWD=123456&GET_STREAM')   #ACTI ACM 8511P
-#cap = cv2.VideoCapture('http://172.16.1.70:7070/cgi-bin/cmd/system?GET_STREAM&USER=[Admin]&PWD=[password]') 
-cap.set(cv2.CAP_PROP_FPS, 10)
+cap = cv2.VideoCapture('rtsp://admin:password@172.16.1.69')
 print(cap.get(cv2.CAP_PROP_FPS))
 while(True):
     ret, frame = cap.read()

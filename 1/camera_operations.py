@@ -32,7 +32,7 @@ def connectCamera(ip, port, user, passw):
 def getStreamLink(ip, port, user, passw):
     cam = connectCamera(ip, port, user, passw)
     mediaService = cam.create_media_service()
-    print(mediaService.GetVideoEncoderConfigurations())
+    #print(mediaService.GetVideoEncoderConfigurations())
     media_profiles = mediaService.GetProfiles()
     #print(media_profiles)
     token = media_profiles[0].token
