@@ -27,7 +27,7 @@ def camera_process_func(queue, ip, port, user, password, name):
     cam_link = camera_operations.getStreamLink(ip, port, user, password)
     cap = cv2.VideoCapture(str(cam_link))
     print("PROCESS {} STARTED ---- CAM : {}".format(os.getpid(), ip))
-    queue2 = multiprocessing.Queue()
+    #queue2 = multiprocessing.Queue()
     #FPS = 1/TIMEOUT
     TIMEOUT = .1
     position = "lat 10 long 20"  #position placeholder
@@ -35,9 +35,16 @@ def camera_process_func(queue, ip, port, user, password, name):
     while(True):
         ret = cap.grab()
         timestamp = datetime.now()
-        if (time.time() - old_timestamp) > TIMEOUT:
-            th = Process(target=thread_func,args=(cap,queue, queue2, name, timestamp, position))
-            th.start()
+        timestamp2 = time.time()
+        #print(timestamp2 - old_timestamp)
+        if ((time.time() - old_timestamp) > TIMEOUT) and ret == True:
+            #th = Process(target=thread_func,args=(cap,queue, queue2, name, timestamp, position))
+            #th.start()
+            _ , frame = cap.retrieve()
+            frame = cv2.resize(frame,(0,0), fx=0.25,fy=0.25)
+            data_for_consumer = Frame_data(frame, timestamp, position, name)
+            #cv2.imshow(name,frame)
+            queue.put(data_for_consumer)
             old_timestamp = time.time()
             print(time.time() - old_timestamp)
             if cv2.waitKey(1) & 0xFF == ord('q'):
