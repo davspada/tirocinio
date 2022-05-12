@@ -10,8 +10,9 @@ def process_data(queue):
             data = queue.get()
             name = data.name
             ts = data.timestamp
-            ts.strftime("%m/%d/%Y-%H:%M:%-S")
+            #ts.strftime("%m/%d/%Y-%H:%M:%-S")
             #IP YEAR MONTH DAY HOUR 
+            print("frames/"+str(name)+"/"+str(ts)+".jpg")
             cv2.imwrite("frames/"+str(name)+"/"+str(ts)+".jpg", data.frame)
         else:
             print("EMPTY QUEUE")
