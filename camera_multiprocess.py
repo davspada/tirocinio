@@ -3,8 +3,10 @@ import os
 import time
 import cv2
 import camera_operations
+from vidgear.gears import CamGear
 
 
+#data package for consumer
 class Frame_data:
   def __init__(self, frame, timestamp, position, name):
     self.frame = frame
@@ -12,29 +14,51 @@ class Frame_data:
     self.position = position
     self.name = name
 
+
+
+
+
 #gets stream link, starts the capture, adds metadata to each frame and sends it to the queue
 def camera_process_func(queue, ip, port, user, password, name):
+    
+    #gets camera stream link
     cam_link = camera_operations.getStreamLink(ip, port, user, password)
-    cap = cv2.VideoCapture(str(cam_link))
+    
+    #camera istance
+    stream = CamGear(source=cam_link, logging=True).start()
     print("PROCESS {} STARTED ---- CAM : {}".format(os.getpid(), ip))
     
     #FPS = 1/TIMEOUT
-    TIMEOUT = .1
+    #TIMEOUT = .1
     position = "lat 10 long 20"  #position placeholder
+    
     old_timestamp = time.time()
+    #LOOP FOR STREAM
     while(True):
-        ret, frame = cap.read()
+        
+        #reads frame and adds timestamp
+        frame = stream.read()
         timestamp = datetime.now()
-        if (time.time() - old_timestamp) > TIMEOUT:
-            frame = cv2.resize(frame,(0,0), fx=0.25,fy=0.25)
-            data_for_consumer = Frame_data(frame, timestamp, position, name)
-            #cv2.imshow(name,frame)
-            queue.put(data_for_consumer)
-            print(time.time()-old_timestamp)
-            old_timestamp = time.time()
-            if cv2.waitKey(1) & 0xFF == ord('q'):
-                print("CAMERA STOPPED")
-                break
 
-    cap.release()
+        #do something with the frame
+        #frame = cv2.resize(frame,(0,0), fx=0.25,fy=0.25)
+        #cv2.imshow(name,frame)
+        
+        #creates the data package for the consumer
+        data_for_consumer = Frame_data(frame, timestamp, position, name)
+        
+        #puts data in queue for consumer
+        queue.put(data_for_consumer)
+        
+        #debug for performance
+        print(time.time()-old_timestamp)
+        
+        old_timestamp = time.time()
+        
+        
+        if cv2.waitKey(1) & 0xFF == ord('q'):
+            print("CAMERA STOPPED")
+            break
+
+    stream.stop()
     cv2.destroyAllWindows()
