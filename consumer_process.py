@@ -1,6 +1,6 @@
 from datetime import date
 import os
-from time import strftime
+from time import sleep, strftime
 import cv2
 
 def process_data(queue):
@@ -10,6 +10,7 @@ def process_data(queue):
     
     while(True):
         if not queue.empty():
+            print(queue.qsize())
             data = queue.get()
             
             #resizes frame
@@ -19,6 +20,8 @@ def process_data(queue):
             ts.strftime("%m/%d/%Y-%H:%M:%-S")
             #IP YEAR MONTH DAY HOUR 
             cv2.imwrite("frames/"+str(name)+"/"+str(ts)+".jpg", rframe)
+        else:
+            sleep(0.01)
 
 
 #check se folder esiste  ---> si ---> piazza

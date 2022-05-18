@@ -98,7 +98,10 @@ se esiste salva il pacchetto dati, altrimenti crea il path e poi lo salva
 
 
 #TODO
--CREAZIONE AUTOMATICA FOLDERS
 -----NUMERO DI CONSUMATORI PARAMETRICO
----GRAB E RETRIEVE, VALUTARE PRESTAZIONI ---> grab e retrieve perde molti frames
----PROVARE A RIDURRE RITARDO INIZIALE CON UNA READ PRIMA DEL WHILE  --> inutile
+-----GRAB E RETRIEVE, VALUTARE PRESTAZIONI ---> grab e retrieve perde molti frames
+-----PROVARE A RIDURRE RITARDO INIZIALE CON UNA READ PRIMA DEL WHILE  --> inutile
+
+-------------------------
+discover dei dispositivi compatibili con onvif, invece di prendere la roba dal JSON
+-CREAZIONE AUTOMATICA FOLDERS

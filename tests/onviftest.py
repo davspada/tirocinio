@@ -6,10 +6,10 @@ import numpy as np
 import requests
 from requests.auth import HTTPDigestAuth
 
-ip = '172.16.1.70'
+ip = '172.16.1.69'
 port = '8000'
-user = 'Admin'
-passw = '123456'
+user = 'admin'
+passw = 'password'
 
 cam = ONVIFCamera(ip,port, user, passw)
 # Get Hostname
@@ -18,16 +18,17 @@ print('My camera`s hostname: ' + str(resp.Name))
 
 mediaService = cam.create_media_service()
 media_profiles = mediaService.GetProfiles()
+print(media_profiles)
 token = media_profiles[0].token
 uri = mediaService.GetStreamUri({'StreamSetup':{'Stream':'RTP-Unicast','Transport':'UDP'},'ProfileToken':token})
 prefactor_uri = uri['Uri']
-print(prefactor_uri)
+#print(prefactor_uri)
 
 def appendCredencials(pre_uri, username, password):
     return 'rtsp://'+username+':'+password+'@'+ip
 
 final_uri = appendCredencials(prefactor_uri,user,passw)
-print(final_uri)
+#print(final_uri)
 cap = cv2.VideoCapture(final_uri)
 while(True):
 #for i in range(30):
@@ -35,7 +36,7 @@ while(True):
     frame = cv2.resize(frame, (0, 0), fx=0.5, fy=0.5) 
     #width = int(cap.get(3))
     #height = int(cap.get(4))
-    cv2.imshow('frame',frame)
+    #cv2.imshow('frame',frame)
     #cv2.imwrite('frames/gr'+str(i)+'.jpg', frame)
 
     if cv2.waitKey(1) & 0xFF == ord('q'):
