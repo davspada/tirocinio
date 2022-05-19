@@ -16,7 +16,7 @@ def choose_cons_number():
 for camera in camera_list:
     #print("trying to access ---"+camera.ip+ camera.port+ camera.user+camera.passw)
     name = camera.ip.replace(".","")
-    proc = multiprocessing.Process(target = camera_multiprocess.camera_process_func,args=(queue_mp, camera.ip, camera.port, camera.user, camera.passw, name))
+    proc = multiprocessing.Process(target = camera_multiprocess.camera_process_func,args=(queue_mp, camera.ip, camera.port, camera.user, camera.passw))
     processes_list.append(proc)
 
 #cn = choose_cons_number()

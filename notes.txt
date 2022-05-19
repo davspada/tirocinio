@@ -96,6 +96,8 @@ se esiste salva il pacchetto dati, altrimenti crea il path e poi lo salva
 - i consumatori fanno infinitamente un check se la lista è vuota, quando non lo è prendono il dato
     (qui c'è da provare se effettivamente c'è bisogno o meno di un semaforo per put/get)
 
+valkka library
+
 
 #TODO
 -----NUMERO DI CONSUMATORI PARAMETRICO

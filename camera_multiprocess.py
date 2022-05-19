@@ -20,10 +20,10 @@ class Frame_data:
 
 
 #gets stream link, starts the capture, adds metadata to each frame and sends it to the queue
-def camera_process_func(queue, ip, port, user, password, name):
+def camera_process_func(queue, ip, port, user, password):
     
     #gets camera stream link
-    cam_link = camera_operations.getStreamLink(ip, port, user, password)
+    cam_link, name = camera_operations.getStreamLink(ip, port, user, password)
     
 
     options = {"CAP_PROP_FRAME_WIDTH":320.0, "CAP_PROP_FRAME_HEIGHT":240.0}
