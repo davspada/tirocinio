@@ -37,10 +37,10 @@ def process_data(queue):
             pathstring = 'frames/{name}/{year}/{month}/{day}/{hour}/{minute}/{second}/'.format(name=fname, year=fyear, month=fmonth, day=fday, hour=fhour, minute=fminute, second=fsecond)
             #p = Path(pathstring)
             #print(p)
-            os.makedirs(pathstring)
+            os.makedirs(pathstring,exist_ok=True)
 
-            #cv2.imwrite("frames/"+name+"/"+str(ts)+".jpg", rframe)
             cv2.imwrite(pathstring+str(ts)+".jpg", rframe)
+            print("WROTE ------ "+str(pathstring)+str(ts)+".jpg")
         else:
             sleep(0.01)
 
