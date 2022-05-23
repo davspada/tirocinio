@@ -14,7 +14,7 @@ def process_data(queue):
     
     while(True):
         if not queue.empty():
-            #print(queue.qsize())
+            print(queue.qsize())
             data = queue.get()
             
             #resizes frame
@@ -49,7 +49,7 @@ def process_data(queue):
             values = {"path" : pathstring ,"timestamp": ts, "position":"position10", "name" : fname}
             auth=('davide','password')
 
-            r = requests.post(url, files=files, data=values, auth=auth)
+            #r = requests.post(url, files=files, data=values, auth=auth)
 
             
 
