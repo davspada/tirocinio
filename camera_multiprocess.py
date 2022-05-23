@@ -38,8 +38,8 @@ def camera_process_func(queue, ip, port, user, password):
     
     old_timestamp = time.time()
     #LOOP FOR STREAM
-    while(True):
-
+    #while(True):
+    for i in range (50):
         frame = stream.read()
         timestamp = datetime.now()
 

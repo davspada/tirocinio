@@ -3,6 +3,9 @@ import os
 from time import sleep, strftime
 import cv2
 from pathlib import Path
+import requests
+
+url = 'http://172.16.1.76:8000/camera/post_frame'
 
 def process_data(queue):
     #debug
@@ -34,13 +37,21 @@ def process_data(queue):
             fsecond = ts.strftime("%S")
             #print("second:", second)
 
-            pathstring = 'frames/{name}/{year}/{month}/{day}/{hour}/{minute}/{second}/'.format(name=fname, year=fyear, month=fmonth, day=fday, hour=fhour, minute=fminute, second=fsecond)
+            pathstring = 'images/{name}/{year}/{month}/{day}/{hour}/{minute}/{second}/'.format(name=fname, year=fyear, month=fmonth, day=fday, hour=fhour, minute=fminute, second=fsecond)
             #p = Path(pathstring)
             #print(p)
             os.makedirs(pathstring,exist_ok=True)
 
             cv2.imwrite(pathstring+str(ts)+".jpg", rframe)
             print("WROTE ------ "+str(pathstring)+str(ts)+".jpg")
+
+            files = {'frame': open(str(pathstring)+str(ts)+".jpg", 'rb')}
+            values = {"path" : pathstring ,"timestamp": ts, "position":"position10", "name" : fname}
+            auth=('davide','password')
+
+            r = requests.post(url, files=files, data=values, auth=auth)
+
+            
         else:
             sleep(0.01)
 
