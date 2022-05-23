@@ -8,7 +8,12 @@ import requests
 
 url = 'http://172.16.1.76:8000/camera/post_frame'
 
-queue_post = multiprocessing.Queue()
+
+class Post_data:
+  def __init__(self, files, values, auth):
+    self.files = files
+    self.values = values
+    self.auth = auth
 
 def post_request(queue):
     
@@ -18,7 +23,7 @@ def post_request(queue):
             files, values, auth =queue.get()
             r = requests.post(url, files=files, data=values, auth=auth)
 
-def process_data(queue):
+def process_data(queue, queue_post):
     #debug
     print("CONSUMER {} STARTED".format(os.getpid()))
     
@@ -60,8 +65,9 @@ def process_data(queue):
             values = {"path" : pathstring ,"timestamp": ts, "position":"position10", "name" : fname}
             auth=('davide','password')
 
-            queue_post.put(files, values, auth)
-            cons = multiprocessing.Process(target=post_request,args=(queue_post, ))
+            post_data = Post_data(files, values, auth)
+
+            queue_post.put(post_data)
             
 
             
