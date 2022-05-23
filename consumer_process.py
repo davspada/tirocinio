@@ -49,7 +49,7 @@ def process_data(queue):
             values = {"path" : pathstring ,"timestamp": ts, "position":"position10", "name" : fname}
             auth=('davide','password')
 
-            #r = requests.post(url, files=files, data=values, auth=auth)
+            r = requests.post(url, files=files, data=values, auth=auth)
 
             
 
