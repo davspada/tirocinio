@@ -1,4 +1,5 @@
 from datetime import date
+import multiprocessing
 import os
 from time import sleep, strftime
 import cv2
@@ -7,6 +8,16 @@ import requests
 
 url = 'http://172.16.1.76:8000/camera/post_frame'
 
+queue_post = multiprocessing.Queue()
+
+def post_request(queue):
+    
+    while(True):
+        if not queue.empty():
+            print("POST Q: "+str(queue.qsize()))
+            files, values, auth =queue.get()
+            r = requests.post(url, files=files, data=values, auth=auth)
+
 def process_data(queue):
     #debug
     print("CONSUMER {} STARTED".format(os.getpid()))
@@ -14,7 +25,7 @@ def process_data(queue):
     
     while(True):
         if not queue.empty():
-            print(queue.qsize())
+            print("FRAME Q: "+str(queue.qsize()))
             data = queue.get()
             
             #resizes frame
@@ -49,7 +60,9 @@ def process_data(queue):
             values = {"path" : pathstring ,"timestamp": ts, "position":"position10", "name" : fname}
             auth=('davide','password')
 
-            r = requests.post(url, files=files, data=values, auth=auth)
+            queue_post.put(files, values, auth)
+            cons = multiprocessing.Process(target=post_request,args=(queue_post, ))
+            
 
             
 
