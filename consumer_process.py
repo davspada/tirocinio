@@ -20,7 +20,8 @@ def post_request(queue):
     while(True):
         if not queue.empty():
             print("POST Q: "+str(queue.qsize()))
-            files, values, auth =queue.get()
+            filename, values, auth =queue.get()
+            files = {'frame': open(filename, 'rb')}
             r = requests.post(url, files=files, data=values, auth=auth)
 
 def process_data(queue, queue_post):
@@ -57,15 +58,15 @@ def process_data(queue, queue_post):
             #p = Path(pathstring)
             #print(p)
             os.makedirs(pathstring,exist_ok=True)
-
-            cv2.imwrite(pathstring+str(ts)+".jpg", rframe)
+            filename = pathstring+str(ts)+".jpg"
+            cv2.imwrite(filename, rframe)
             #print("WROTE ------ "+str(pathstring)+str(ts)+".jpg")
 
-            files = '{"frame": open(str(pathstring)+str(ts)+".jpg", 'rb')}'
+            #files = {'frame': open(str(pathstring)+str(ts)+".jpg", 'rb')}
             values = {"path" : pathstring ,"timestamp": ts, "position":"position10", "name" : fname}
             auth=('davide','password')
 
-            post_data = Post_data(files, values, auth)
+            post_data = Post_data(filename, values, auth)
 
             queue_post.put(post_data)
             
