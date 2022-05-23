@@ -61,7 +61,7 @@ def process_data(queue, queue_post):
             cv2.imwrite(pathstring+str(ts)+".jpg", rframe)
             #print("WROTE ------ "+str(pathstring)+str(ts)+".jpg")
 
-            files = {'frame': open(str(pathstring)+str(ts)+".jpg", 'rb')}
+            files = '{"frame": open(str(pathstring)+str(ts)+".jpg", 'rb')}'
             values = {"path" : pathstring ,"timestamp": ts, "position":"position10", "name" : fname}
             auth=('davide','password')
 
