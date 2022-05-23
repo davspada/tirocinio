@@ -52,8 +52,6 @@ def process_data(queue):
             r = requests.post(url, files=files, data=values, auth=auth)
 
             
-        else:
-            sleep(0.01)
 
 
 #check se folder esiste  ---> si ---> piazza
