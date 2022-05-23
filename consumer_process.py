@@ -43,7 +43,7 @@ def process_data(queue):
             os.makedirs(pathstring,exist_ok=True)
 
             cv2.imwrite(pathstring+str(ts)+".jpg", rframe)
-            print("WROTE ------ "+str(pathstring)+str(ts)+".jpg")
+            #print("WROTE ------ "+str(pathstring)+str(ts)+".jpg")
 
             files = {'frame': open(str(pathstring)+str(ts)+".jpg", 'rb')}
             values = {"path" : pathstring ,"timestamp": ts, "position":"position10", "name" : fname}
