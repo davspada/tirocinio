@@ -10,19 +10,23 @@ url = 'http://172.16.1.76:8000/camera/post_frame'
 
 
 class Post_data:
-  def __init__(self, files, values, auth):
-    self.files = files
-    self.values = values
+  def __init__(self, filename,pathstring, timestamp, position, auth, name):
+    self.filename = filename
+    self.pathstring = pathstring
+    self.timestamp = timestamp
     self.auth = auth
+    self.position = position
+    self.name = name
 
 def post_request(queue):
     
     while(True):
         if not queue.empty():
             print("POST Q: "+str(queue.qsize()))
-            filename, values, auth =queue.get()
-            files = {'frame': open(filename, 'rb')}
-            r = requests.post(url, files=files, data=values, auth=auth)
+            data =queue.get()
+            files = {'frame': open(data.filename, 'rb')}
+            values = {"path" : data.pathstring ,"timestamp": data.timestamp, "position":data.position, "name" : data.name}
+            r = requests.post(url, files=files, data=values, auth=data.auth)
 
 def process_data(queue, queue_post):
     #debug
@@ -63,10 +67,10 @@ def process_data(queue, queue_post):
             #print("WROTE ------ "+str(pathstring)+str(ts)+".jpg")
 
             #files = {'frame': open(str(pathstring)+str(ts)+".jpg", 'rb')}
-            values = {"path" : pathstring ,"timestamp": ts, "position":"position10", "name" : fname}
+            #values = {"path" : pathstring ,"timestamp": ts, "position":"position10", "name" : fname}
             auth=('davide','password')
 
-            post_data = Post_data(filename, values, auth)
+            post_data = Post_data(filename, pathstring, ts, "position11" , fname, auth)
 
             queue_post.put(post_data)
             
