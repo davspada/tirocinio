@@ -1,5 +1,6 @@
 from collections import namedtuple
 import json
+from unicodedata import name
 from numpy import size
 from onvif import ONVIFCamera
 
@@ -24,13 +25,15 @@ def appendCredencials(pre_uri, username, password, ip):
 
 def connectCamera(ip, port, user, passw):
     cam = ONVIFCamera(ip,port, user, passw)
-    resp = cam.devicemgmt.GetHostname()
-    #print('Connected to cam : ' +ip+' - Hostname : '+str(resp))
-    return cam
+    #resp = cam.devicemgmt.GetHostname()
+    resp = cam.devicemgmt.GetDeviceInformation()
+    #print('Connected to cam : ' +ip+' - Hostname : '+str(resp['SerialNumber']))
+    name = str(resp['SerialNumber'])
+    return cam, name
 
 
 def getStreamLink(ip, port, user, passw):
-    cam = connectCamera(ip, port, user, passw)
+    cam, name = connectCamera(ip, port, user, passw)
     mediaService = cam.create_media_service()
     media_profiles = mediaService.GetProfiles()
     #print(media_profiles)
@@ -40,7 +43,7 @@ def getStreamLink(ip, port, user, passw):
     #print(prefactor_uri)
     final_uri = appendCredencials(prefactor_uri,user,passw,ip)
     #print('Stream link : '+final_uri)
-    return final_uri
+    return final_uri, name
 
 
 if __name__ == '__main__':

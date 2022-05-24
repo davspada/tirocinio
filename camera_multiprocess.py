@@ -20,10 +20,10 @@ class Frame_data:
 
 
 #gets stream link, starts the capture, adds metadata to each frame and sends it to the queue
-def camera_process_func(queue, ip, port, user, password, name):
+def camera_process_func(queue, ip, port, user, password):
     
     #gets camera stream link
-    cam_link = camera_operations.getStreamLink(ip, port, user, password)
+    cam_link, name = camera_operations.getStreamLink(ip, port, user, password)
     
 
     options = {"CAP_PROP_FRAME_WIDTH":320.0, "CAP_PROP_FRAME_HEIGHT":240.0}
@@ -33,13 +33,13 @@ def camera_process_func(queue, ip, port, user, password, name):
     
     
     #FPS = 1/TIMEOUT
-    TIMEOUT = 0
+    TIMEOUT = 0.20
     position = "lat 10 long 20"  #position placeholder
     
     old_timestamp = time.time()
     #LOOP FOR STREAM
     while(True):
-
+    #for i in range (50):
         frame = stream.read()
         timestamp = datetime.now()
 
