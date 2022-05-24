@@ -33,7 +33,7 @@ def camera_process_func(queue, ip, port, user, password):
     
     
     #FPS = 1/TIMEOUT
-    TIMEOUT = 0
+    TIMEOUT = 0.20
     position = "lat 10 long 20"  #position placeholder
     
     old_timestamp = time.time()
