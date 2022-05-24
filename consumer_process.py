@@ -28,7 +28,7 @@ def post_request(queue):
             data =queue.get()
             files = {'frame': open(data.filename, 'rb')}
             values = {"path" : data.pathstring ,"timestamp": data.timestamp, "position":data.position, "name" : data.name}
-            r = requests.post(url, files=files, data=values, auth=data.auth)
+            r = requests.post(url, files=files, data=values, auth=(data.username, data.password))
             print(r._content)
 
 def process_data(queue, queue_post):
