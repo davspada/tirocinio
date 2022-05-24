@@ -27,6 +27,7 @@ def post_request(queue):
             files = {'frame': open(data.filename, 'rb')}
             values = {"path" : data.pathstring ,"timestamp": data.timestamp, "position":data.position, "name" : data.name}
             r = requests.post(url, files=files, data=values, auth=data.auth)
+            print(r._content)
 
 def process_data(queue, queue_post):
     #debug
@@ -35,7 +36,7 @@ def process_data(queue, queue_post):
     
     while(True):
         if not queue.empty():
-            print("FRAME Q: "+str(queue.qsize()))
+            #print("FRAME Q: "+str(queue.qsize()))
             data = queue.get()
             
             #resizes frame
