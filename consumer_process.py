@@ -7,14 +7,16 @@ from pathlib import Path
 import requests
 
 url = 'http://172.16.1.76:8000/camera/post_frame'
-
+username = 'davide'
+password = 'password'
 
 class Post_data:
-  def __init__(self, filename,pathstring, timestamp, position, auth, name):
+  def __init__(self, filename,pathstring, timestamp, position, username, password, name):
     self.filename = filename
     self.pathstring = pathstring
     self.timestamp = timestamp
-    self.auth = auth
+    self.username = username
+    self.password = password
     self.position = position
     self.name = name
 
@@ -69,9 +71,9 @@ def process_data(queue, queue_post):
 
             #files = {'frame': open(str(pathstring)+str(ts)+".jpg", 'rb')}
             #values = {"path" : pathstring ,"timestamp": ts, "position":"position10", "name" : fname}
-            auth=('davide','password')
+            #auth=('davide','password')
 
-            post_data = Post_data(filename, pathstring, ts, "position11" , fname, auth)
+            post_data = Post_data(filename, pathstring, ts, "position11" , fname, username, password)
 
             queue_post.put(post_data)
             
