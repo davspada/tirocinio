@@ -73,7 +73,7 @@ def process_data(queue, queue_post):
             #values = {"path" : pathstring ,"timestamp": ts, "position":"position10", "name" : fname}
             #auth=('davide','password')
 
-            post_data = Post_data(filename, pathstring, ts, "position11" , fname, username, password)
+            post_data = Post_data(filename, pathstring, ts, username, password ,"position11" , fname)
 
             queue_post.put(post_data)
             
