@@ -6,7 +6,7 @@ import cv2
 from pathlib import Path
 import requests
 
-url = 'http://172.16.1.80:8000/camera/post_frame'
+url = 'http://172.16.1.27:8000/camera/post_frame'
 username = 'davide'
 password = 'password'
 
@@ -62,18 +62,13 @@ def process_data(queue, queue_post):
             #print("second:", second)
 
             pathstring = 'images/{name}/{year}/{month}/{day}/{hour}/{minute}/{second}/'.format(name=fname, year=fyear, month=fmonth, day=fday, hour=fhour, minute=fminute, second=fsecond)
-            #p = Path(pathstring)
-            #print(p)
+
             os.makedirs(pathstring,exist_ok=True)
             filename = pathstring+str(ts)+".jpg"
             cv2.imwrite(filename, rframe)
-            #print("WROTE ------ "+str(pathstring)+str(ts)+".jpg")
 
-            #files = {'frame': open(str(pathstring)+str(ts)+".jpg", 'rb')}
-            #values = {"path" : pathstring ,"timestamp": ts, "position":"position10", "name" : fname}
-            #auth=('davide','password')
 
-            post_data = Post_data(filename, pathstring, ts, username, password ,"position11" , fname)
+            post_data = Post_data(filename, pathstring, ts,"position11", username, password, fname)
 
             queue_post.put(post_data)
             
