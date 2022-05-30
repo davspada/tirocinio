@@ -45,8 +45,7 @@ def process_data(queue, queue_post):
             rframe = cv2.resize(data.frame, (0, 0), fx=0.25, fy=0.25) 
             fname = data.name
             ts = data.timestamp
-            ts.strftime("%m/%d/%Y-%H:%M:%-S")
-            #IP YEAR MONTH DAY HOUR 
+            ts.strftime("%m/%d/%Y%H:%M:%S")
 
             fyear = ts.strftime("%Y")
             #print("year:", year)
