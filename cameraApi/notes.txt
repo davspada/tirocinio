@@ -1,0 +1,64 @@
+TO DO
+-use cases
+---chiamate differenziate (detail qui https://blog.logrocket.com/django-rest-framework-create-api/)
+---come fare upload immagini / come formattarle
+---questione database ---> sqlite dovrebbe andar bene, devo capire come formattare 
+-delete (guarda sotto)
+-rifinire get single frame e documentare utilizzo
+        (fare funzione per formattare dati from input ---> generare chiamata api formattata come serve)
+-gestire push to api/api storage dal programma principale(es: tenere 1 fps x invio)
+-refactoring    -api
+                -programma principale
+
+
+
+
+DELETE HOW TO
+processo in background che sarà schedulato per essere runnato giornalmente e che cancella sia la foto sia la entry nel db
+-api call per la entry nel db sicuramente
+--- da vedere se basta questa per eliminare anche la foto in sè
+------ altrimenti il processo fa la api call e magari prende i nomi / path e cancella anche quelli in locale
+
+
+
+PRENDERE FILE DA CARTELLA PROGRAMMA DI ACQUISIZIONE
+quando faccio il get e non lo trovo, devo controllare se esiste la cartella con quella roba ed eventualmente passarla all'api
+
+
+
+
+GET SINGLE FRAME
+
+MODALITA' DI PARSING
+jsondata = r.json()
+print(jsondata)
+lista = json.loads(jsondata)
+for j in lista:
+    for i in j:
+      pdata = Post_data(i["path"], i["frame"], i["timestamp"],i["position"],i["name"])
+      path = pdata.frame
+      img = cv2.imread(path[1:], 1)
+      cv2.imshow('frame', img)
+      cv2.waitKey(0)
+      cv2.destroyWindow('frame')
+
+FORMAT DATA
+data1='2022/05/30 12:34:00'
+data2='2022/05/30 12:34:29'
+
+
+
+
+
+
+
+
+USE CASES
+-prendi tutti (inutile)
+-prendi in base alla camera --- un giorno  -> intervallo di tempo, più generico
+                            --- un' ora
+                            --- un minuto
+-prendi in base ad una posizione --- in un intervallo di tempo
+-prendere un frame significativo al secondo, in un intervallo di tempo ---
+        --- come sceglierlo? - analisi video
+                             - uno con criterio fisso (primo / ultimo / ...)
