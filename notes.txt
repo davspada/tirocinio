@@ -107,3 +107,7 @@ valkka library
 -------------------------
 discover dei dispositivi compatibili con onvif, invece di prendere la roba dal JSON
 -CREAZIONE AUTOMATICA FOLDERS
+
+
+
+monitor del file system che controlla lo stato dei file e updata di conseguenza il db
