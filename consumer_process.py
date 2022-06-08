@@ -6,7 +6,7 @@ import cv2
 from pathlib import Path
 import requests
 
-url = 'http://172.16.1.67:8000/camera/post_frame'
+url = 'http://172.16.1.8:8000/camera/post_frame'
 username = 'davide'
 password = 'password'
 
@@ -26,13 +26,12 @@ def post_request(queue):
         if not queue.empty():
             print("POST Q: "+str(queue.qsize()))
             data =queue.get()
-            files = {'frame': open(data.filename, 'rb')}
-            values = {"path" : data.pathstring ,"timestamp": data.timestamp, "position":data.position, "name" : data.name}
-            r = requests.post(url, files=files, data=values, auth=('davide','password'))
-            #print(r._content)
+            #files = {'frame': open(data.filename, 'rb')}
+            #values = {"path" : data.pathstring ,"timestamp": data.timestamp, "position":data.position, "name" : data.name}
+            #r = requests.post(url, files=files, data=values, auth=('davide','password'))
+
 
 def process_data(queue, queue_post):
-    #debug
     print("CONSUMER {} STARTED".format(os.getpid()))
     
     
@@ -60,7 +59,7 @@ def process_data(queue, queue_post):
             fsecond = ts.strftime("%S")
             #print("second:", second)
 
-            pathstring = 'images/{name}/{year}/{month}/{day}/{hour}/{minute}/{second}/'.format(name=fname, year=fyear, month=fmonth, day=fday, hour=fhour, minute=fminute, second=fsecond)
+            pathstring = 'cameraApi/media/images/{name}/{year}/{month}/{day}/{hour}/{minute}/{second}/'.format(name=fname, year=fyear, month=fmonth, day=fday, hour=fhour, minute=fminute, second=fsecond)
 
             os.makedirs(pathstring,exist_ok=True)
             filename = pathstring+str(ts)+".jpg"
