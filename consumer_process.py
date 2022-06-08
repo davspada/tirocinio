@@ -4,11 +4,16 @@ import os
 from time import sleep, strftime
 import cv2
 from pathlib import Path
+import psycopg2
 import requests
 
 url = 'http://172.16.1.8:8000/camera/post_frame'
 username = 'davide'
 password = 'password'
+
+#connection to db
+conn = psycopg2.connect("dbname=framesdb user=dbuser host=localhost password=password")
+cur = conn.cursor()
 
 class Post_data:
   def __init__(self, filename,pathstring, timestamp, position, username, password, name):
@@ -24,11 +29,12 @@ def post_request(queue):
     
     while(True):
         if not queue.empty():
-            print("POST Q: "+str(queue.qsize()))
+            #print("POST Q: "+str(queue.qsize()))
             data =queue.get()
-            #files = {'frame': open(data.filename, 'rb')}
-            #values = {"path" : data.pathstring ,"timestamp": data.timestamp, "position":data.position, "name" : data.name}
-            #r = requests.post(url, files=files, data=values, auth=('davide','password'))
+            query = f"INSERT INTO camera_api_data (frame, position, timestamp, name, path) VALUES ('{data.filename}', '{data.position}', '{data.timestamp}', '{data.name}', '{data.pathstring}')"
+            cur.execute(query)
+            conn.commit()
+            #print("inserted ---", data.name, data.timestamp)
 
 
 def process_data(queue, queue_post):
@@ -37,7 +43,7 @@ def process_data(queue, queue_post):
     
     while(True):
         if not queue.empty():
-            print("FRAME Q: "+str(queue.qsize()))
+            #print("FRAME Q: "+str(queue.qsize()))
             data = queue.get()
             
             #resizes frame
