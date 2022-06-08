@@ -6,7 +6,7 @@ import cv2
 from pathlib import Path
 import requests
 
-url = 'http://172.16.1.27:8000/camera/post_frame'
+url = 'http://172.16.1.67:8000/camera/post_frame'
 username = 'davide'
 password = 'password'
 
