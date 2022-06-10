@@ -4,12 +4,18 @@ import os
 from time import sleep, strftime
 import cv2
 from pathlib import Path
+import psycopg2
 import requests
 
-url = 'http://172.16.1.67:8000/camera/post_frame'
+url = 'http://172.16.1.8:8000/camera/post_frame'
 username = 'davide'
 password = 'password'
 
+#connection to db
+conn = psycopg2.connect("dbname=framesdb user=dbuser host=localhost password=password")
+cur = conn.cursor()
+
+#username e password NON PIU' NECESSARI
 class Post_data:
   def __init__(self, filename,pathstring, timestamp, position, username, password, name):
     self.filename = filename
@@ -24,21 +30,21 @@ def post_request(queue):
     
     while(True):
         if not queue.empty():
-            print("POST Q: "+str(queue.qsize()))
+            #print("POST Q: "+str(queue.qsize()))
             data =queue.get()
-            files = {'frame': open(data.filename, 'rb')}
-            values = {"path" : data.pathstring ,"timestamp": data.timestamp, "position":data.position, "name" : data.name}
-            r = requests.post(url, files=files, data=values, auth=('davide','password'))
-            #print(r._content)
+            query = f"INSERT INTO camera_api_data (frame, position, timestamp, name, path) VALUES ('{data.filename}', '{data.position}', '{data.timestamp}', '{data.name}', '{data.pathstring}')"
+            cur.execute(query)
+            conn.commit()
+            #print("inserted ---", data.name, data.timestamp)
+
 
 def process_data(queue, queue_post):
-    #debug
     print("CONSUMER {} STARTED".format(os.getpid()))
     
     
     while(True):
         if not queue.empty():
-            print("FRAME Q: "+str(queue.qsize()))
+            #print("FRAME Q: "+str(queue.qsize()))
             data = queue.get()
             
             #resizes frame
@@ -60,7 +66,7 @@ def process_data(queue, queue_post):
             fsecond = ts.strftime("%S")
             #print("second:", second)
 
-            pathstring = 'images/{name}/{year}/{month}/{day}/{hour}/{minute}/{second}/'.format(name=fname, year=fyear, month=fmonth, day=fday, hour=fhour, minute=fminute, second=fsecond)
+            pathstring = 'cameraApi/media/images/{name}/{year}/{month}/{day}/{hour}/{minute}/{second}/'.format(name=fname, year=fyear, month=fmonth, day=fday, hour=fhour, minute=fminute, second=fsecond)
 
             os.makedirs(pathstring,exist_ok=True)
             filename = pathstring+str(ts)+".jpg"
