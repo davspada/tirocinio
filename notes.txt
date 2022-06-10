@@ -175,3 +175,8 @@ USE CASES
 -prendere un frame significativo al secondo, in un intervallo di tempo ---
         --- come sceglierlo? - analisi video
                              - uno con criterio fisso (primo / ultimo / ...)
+
+
+TASK CHE DATO UN INTERVALLO DI TEMPO NE CREA IL VIDEO
+REFACTORING - UNIT TESTING
+TEST DI INTEGRAZIONE
