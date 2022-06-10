@@ -15,6 +15,7 @@ password = 'password'
 conn = psycopg2.connect("dbname=framesdb user=dbuser host=localhost password=password")
 cur = conn.cursor()
 
+#username e password NON PIU' NECESSARI
 class Post_data:
   def __init__(self, filename,pathstring, timestamp, position, username, password, name):
     self.filename = filename
