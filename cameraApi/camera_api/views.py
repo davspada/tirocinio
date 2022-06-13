@@ -4,7 +4,7 @@ import os
 from django.http import HttpResponse
 from django.shortcuts import redirect, render
 from numpy import integer
-from dateutil import parser
+#from dateutil import parser
 # Create your views here.
 from django.db.models import Count
 from rest_framework.views import APIView
