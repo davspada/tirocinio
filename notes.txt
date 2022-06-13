@@ -124,20 +124,15 @@ TO DO
                 -programma principale
 
 -aggiustare single frame, magari con una query più specifica
-
+-TASK CHE DATO UN INTERVALLO DI TEMPO NE CREA IL VIDEO
+-REFACTORING - UNIT TESTING
+-TEST DI INTEGRAZIONE
 
 DELETE HOW TO
 processo in background che sarà schedulato per essere runnato giornalmente e che cancella sia la foto sia la entry nel db
 -api call per la entry nel db sicuramente
 --- da vedere se basta questa per eliminare anche la foto in sè
 ------ altrimenti il processo fa la api call e magari prende i nomi / path e cancella anche quelli in locale
-
-
-
-PRENDERE FILE DA CARTELLA PROGRAMMA DI ACQUISIZIONE
-quando faccio il get e non lo trovo, devo controllare se esiste la cartella con quella roba ed eventualmente passarla all'api
-
-
 
 
 GET SINGLE FRAME
@@ -177,6 +172,9 @@ USE CASES
                              - uno con criterio fisso (primo / ultimo / ...)
 
 
-TASK CHE DATO UN INTERVALLO DI TEMPO NE CREA IL VIDEO
-REFACTORING - UNIT TESTING
-TEST DI INTEGRAZIONE
+VIDEO CREATOR
+per prendere e utilizzare i files da richiesta get_camera_frames
+
+lista = json.loads(r.content)
+for i in lista:
+  print(i['frame'])

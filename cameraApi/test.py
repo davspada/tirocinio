@@ -1,7 +1,7 @@
 import json
 import cv2
 import requests
-import sqlite3
+import ffmpeg
 
 class Post_data:
   def __init__(self,path, frame, timestamp, position, name):
@@ -29,6 +29,16 @@ r= requests.get(url,data={'name' :'00051539673100','ts1': data1,'ts2': data2}, a
 #r = requests.delete(url, auth=auth)
 
 print(r.status_code)
+
+lista = json.loads(r.content)
+f = open('output.txt', 'w')
+for i in lista:
+  print(i['frame'])
+  f.write("file '"+i['frame']+"' \n")
+f.close()
+
+#ffmpeg.input('output.txt', r='20', f='concat', safe='0').output('video.mp4', vcodec='libx264').run()
+
 
 """
 jsondata = r.json()
