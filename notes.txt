@@ -178,3 +178,23 @@ per prendere e utilizzare i files da richiesta get_camera_frames
 lista = json.loads(r.content)
 for i in lista:
   print(i['frame'])
+
+
+ffmpeg -y -r 1/5 -f concat -safe 0 -i "output.txt" -c:v libx264 -vf "fps=25,format=yuv420p" "out.mp4"
+ffmpeg -y -r 1/5 -f concat -safe 0 -i "output.txt" -c:v libx264 -vf "fps=2,format=yuv420p" "out.mp4"
+
+CREA IL FILE OUTPUT.TXT DA DARE IN INPUT A FFMPEG
+lista = json.loads(r.content)
+f = open('output.txt', 'w+')
+for i in lista:
+  path = i['path']
+  frame = i['frame']
+  fullpath = path+frame
+  #print(fullpath)
+  f.write("file '"+fullpath+"' \n")
+f.close()
+
+
+mi servirebbe il nome del file singolo da salvare in db 
+
+-serve capire lo stato di 
