@@ -13,7 +13,7 @@ class Post_data:
 
 url = 'http://172.16.1.83:8000/camera/get_camera_frames'
 
-files = {'frame': open('cameraApi/photo.jpg', 'rb')}
+#files = {'frame': open('cameraApi/photo.jpg', 'rb')}
 values = {"path" : "soldati/soldato/13456abcde","timestamp":"2022-05-23 13:24:23", "position":"position10", "name" : "camera1"}
 auth=('davide','password')
 data3 = '2022-05-26T13:26:21.574020Z'
@@ -31,7 +31,7 @@ r= requests.get(url,data={'name' :'00051539673100','ts1': data1,'ts2': data2}, a
 print(r.status_code)
 
 lista = json.loads(r.content)
-f = open('output.txt', 'w')
+f = open('output.txt', 'w+')
 for i in lista:
   print(i['frame'])
   f.write("file '"+i['frame']+"' \n")
