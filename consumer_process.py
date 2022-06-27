@@ -66,7 +66,7 @@ def process_data(queue, queue_post):
             fsecond = ts.strftime("%S")
             #print("second:", second)
 
-            pathstring = 'cameraApi/media/images/{name}/{year}/{month}/{day}/{hour}/{minute}/{second}/'.format(name=fname, year=fyear, month=fmonth, day=fday, hour=fhour, minute=fminute, second=fsecond)
+            pathstring = '{name}/{year}/{month}/{day}/{hour}/{minute}/{second}/'.format(name=fname, year=fyear, month=fmonth, day=fday, hour=fhour, minute=fminute, second=fsecond)
 
             os.makedirs(pathstring,exist_ok=True)
             filename = pathstring+str(ts)+".jpg"
