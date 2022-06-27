@@ -3,11 +3,11 @@ import shutil
 import psycopg2
 
 #connection to database
-conn = psycopg2.connect("dbname=framesdb user=dbuser host=172.16.1.83 password=password")
+conn = psycopg2.connect("dbname=framesdb user=dbuser host=localhost password=password")
 cur = conn.cursor()
 
 #query to get paths to delete local files
-days = 1
+days = 0
 query = f"SELECT * from camera_api_data WHERE timestamp < NOW() - INTERVAL '{days} days'"
 cur.execute(query)
 results = cur.fetchall()

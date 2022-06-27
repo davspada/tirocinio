@@ -69,8 +69,9 @@ def process_data(queue, queue_post):
             pathstring = 'cameraApi/media/images/{name}/{year}/{month}/{day}/{hour}/{minute}/{second}/'.format(name=fname, year=fyear, month=fmonth, day=fday, hour=fhour, minute=fminute, second=fsecond)
 
             os.makedirs(pathstring,exist_ok=True)
-            filename = pathstring+str(ts)+".jpg"
-            cv2.imwrite(filename, rframe)
+            filename = str(ts)+".jpg"
+            filenameandpath = pathstring+str(ts)+".jpg"
+            cv2.imwrite(filenameandpath, rframe)
 
 
             post_data = Post_data(filename, pathstring, ts,"position11", username, password, fname)

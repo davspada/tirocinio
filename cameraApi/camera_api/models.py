@@ -16,7 +16,8 @@ def get_frame_path(instance, filename):
 # Create your models here.
 class Data(models.Model):
     path = models.CharField(max_length=100)
-    frame = models.ImageField(upload_to=get_frame_path)  #upload_to specifies the directory the images are going to reside
+    frame = models.CharField(max_length=100)
+    #frame = models.ImageField(upload_to=get_frame_path)  #upload_to specifies the directory the images are going to reside
     timestamp = models.DateTimeField(auto_now=False)
     position = models.CharField(max_length= 50)
     name = models.CharField(max_length= 50)
