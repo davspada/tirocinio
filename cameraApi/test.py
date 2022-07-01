@@ -42,7 +42,7 @@ for i in lista:
   print(fullpath)
   #f.write(fullpath+'\n')
   f.write("file '"+fullpath+"' \n")
-  f.write("duration 0.5 \n")
+  f.write("duration 0.04 \n")
 f.close()
 
 #ffmpeg.input('output.txt', r='20', f='concat', safe='0').output('video.mp4', vcodec='libx264').run()
