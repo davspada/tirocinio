@@ -1,57 +1,208 @@
 file 'cameraApi/media/images/00051539673100/2022/06/27/15/33/19/2022-06-27 15:33:19.093911.jpg' 
+duration 0.5 
 file 'cameraApi/media/images/00051539673100/2022/06/27/15/33/19/2022-06-27 15:33:19.631742.jpg' 
+duration 0.5 
 file 'cameraApi/media/images/00051539673100/2022/06/27/15/33/20/2022-06-27 15:33:20.157174.jpg' 
+duration 0.5 
 file 'cameraApi/media/images/00051539673100/2022/06/27/15/33/20/2022-06-27 15:33:20.672495.jpg' 
+duration 0.5 
 file 'cameraApi/media/images/00051539673100/2022/06/27/15/33/21/2022-06-27 15:33:21.182769.jpg' 
+duration 0.5 
 file 'cameraApi/media/images/00051539673100/2022/06/27/15/33/21/2022-06-27 15:33:21.684131.jpg' 
+duration 0.5 
 file 'cameraApi/media/images/00051539673100/2022/06/27/15/33/22/2022-06-27 15:33:22.195580.jpg' 
+duration 0.5 
 file 'cameraApi/media/images/00051539673100/2022/06/27/15/33/22/2022-06-27 15:33:22.726544.jpg' 
+duration 0.5 
 file 'cameraApi/media/images/00051539673100/2022/06/27/15/33/23/2022-06-27 15:33:23.235906.jpg' 
+duration 0.5 
 file 'cameraApi/media/images/00051539673100/2022/06/27/15/33/23/2022-06-27 15:33:23.785677.jpg' 
+duration 0.5 
 file 'cameraApi/media/images/00051539673100/2022/06/27/15/33/24/2022-06-27 15:33:24.288358.jpg' 
+duration 0.5 
 file 'cameraApi/media/images/00051539673100/2022/06/27/15/33/24/2022-06-27 15:33:24.799001.jpg' 
+duration 0.5 
 file 'cameraApi/media/images/00051539673100/2022/06/27/15/33/25/2022-06-27 15:33:25.300428.jpg' 
+duration 0.5 
 file 'cameraApi/media/images/00051539673100/2022/06/27/15/33/25/2022-06-27 15:33:25.843361.jpg' 
+duration 0.5 
 file 'cameraApi/media/images/00051539673100/2022/06/27/15/33/26/2022-06-27 15:33:26.350425.jpg' 
+duration 0.5 
 file 'cameraApi/media/images/00051539673100/2022/06/27/15/33/26/2022-06-27 15:33:26.871397.jpg' 
+duration 0.5 
 file 'cameraApi/media/images/00051539673100/2022/06/27/15/33/27/2022-06-27 15:33:27.469164.jpg' 
+duration 0.5 
 file 'cameraApi/media/images/00051539673100/2022/06/27/15/33/27/2022-06-27 15:33:27.978709.jpg' 
+duration 0.5 
 file 'cameraApi/media/images/00051539673100/2022/06/27/15/33/28/2022-06-27 15:33:28.481617.jpg' 
+duration 0.5 
 file 'cameraApi/media/images/00051539673100/2022/06/27/15/33/28/2022-06-27 15:33:28.996176.jpg' 
+duration 0.5 
 file 'cameraApi/media/images/00051539673100/2022/06/27/15/33/29/2022-06-27 15:33:29.578435.jpg' 
+duration 0.5 
 file 'cameraApi/media/images/00051539673100/2022/06/27/15/33/30/2022-06-27 15:33:30.098452.jpg' 
+duration 0.5 
 file 'cameraApi/media/images/00051539673100/2022/06/27/15/33/30/2022-06-27 15:33:30.640820.jpg' 
+duration 0.5 
 file 'cameraApi/media/images/00051539673100/2022/06/27/15/33/31/2022-06-27 15:33:31.182558.jpg' 
+duration 0.5 
 file 'cameraApi/media/images/00051539673100/2022/06/27/15/33/31/2022-06-27 15:33:31.750169.jpg' 
+duration 0.5 
 file 'cameraApi/media/images/00051539673100/2022/06/27/15/33/32/2022-06-27 15:33:32.262725.jpg' 
+duration 0.5 
 file 'cameraApi/media/images/00051539673100/2022/06/27/15/33/32/2022-06-27 15:33:32.765072.jpg' 
+duration 0.5 
 file 'cameraApi/media/images/00051539673100/2022/06/27/15/33/33/2022-06-27 15:33:33.282555.jpg' 
+duration 0.5 
 file 'cameraApi/media/images/00051539673100/2022/06/27/15/33/33/2022-06-27 15:33:33.813080.jpg' 
+duration 0.5 
 file 'cameraApi/media/images/00051539673100/2022/06/27/15/33/34/2022-06-27 15:33:34.338644.jpg' 
+duration 0.5 
 file 'cameraApi/media/images/00051539673100/2022/06/27/15/33/34/2022-06-27 15:33:34.841886.jpg' 
+duration 0.5 
 file 'cameraApi/media/images/00051539673100/2022/06/27/15/33/35/2022-06-27 15:33:35.422654.jpg' 
+duration 0.5 
 file 'cameraApi/media/images/00051539673100/2022/06/27/15/33/35/2022-06-27 15:33:35.948740.jpg' 
+duration 0.5 
 file 'cameraApi/media/images/00051539673100/2022/06/27/15/33/36/2022-06-27 15:33:36.451939.jpg' 
+duration 0.5 
 file 'cameraApi/media/images/00051539673100/2022/06/27/15/33/36/2022-06-27 15:33:36.998909.jpg' 
+duration 0.5 
 file 'cameraApi/media/images/00051539673100/2022/06/27/15/33/37/2022-06-27 15:33:37.500340.jpg' 
+duration 0.5 
 file 'cameraApi/media/images/00051539673100/2022/06/27/15/33/38/2022-06-27 15:33:38.018251.jpg' 
+duration 0.5 
 file 'cameraApi/media/images/00051539673100/2022/06/27/15/33/38/2022-06-27 15:33:38.521082.jpg' 
+duration 0.5 
 file 'cameraApi/media/images/00051539673100/2022/06/27/15/33/39/2022-06-27 15:33:39.113178.jpg' 
+duration 0.5 
 file 'cameraApi/media/images/00051539673100/2022/06/27/15/33/39/2022-06-27 15:33:39.615679.jpg' 
+duration 0.5 
 file 'cameraApi/media/images/00051539673100/2022/06/27/15/33/40/2022-06-27 15:33:40.182825.jpg' 
+duration 0.5 
 file 'cameraApi/media/images/00051539673100/2022/06/27/15/33/40/2022-06-27 15:33:40.763275.jpg' 
+duration 0.5 
 file 'cameraApi/media/images/00051539673100/2022/06/27/15/33/41/2022-06-27 15:33:41.320399.jpg' 
+duration 0.5 
 file 'cameraApi/media/images/00051539673100/2022/06/27/15/33/41/2022-06-27 15:33:41.893605.jpg' 
+duration 0.5 
 file 'cameraApi/media/images/00051539673100/2022/06/27/15/33/42/2022-06-27 15:33:42.402016.jpg' 
+duration 0.5 
 file 'cameraApi/media/images/00051539673100/2022/06/27/15/33/42/2022-06-27 15:33:42.939340.jpg' 
+duration 0.5 
 file 'cameraApi/media/images/00051539673100/2022/06/27/15/33/43/2022-06-27 15:33:43.517379.jpg' 
+duration 0.5 
 file 'cameraApi/media/images/00051539673100/2022/06/27/15/33/44/2022-06-27 15:33:44.020074.jpg' 
+duration 0.5 
 file 'cameraApi/media/images/00051539673100/2022/06/27/15/33/44/2022-06-27 15:33:44.554116.jpg' 
+duration 0.5 
 file 'cameraApi/media/images/00051539673100/2022/06/27/15/33/45/2022-06-27 15:33:45.054533.jpg' 
+duration 0.5 
 file 'cameraApi/media/images/00051539673100/2022/06/27/15/33/45/2022-06-27 15:33:45.562699.jpg' 
+duration 0.5 
 file 'cameraApi/media/images/00051539673100/2022/06/27/15/33/46/2022-06-27 15:33:46.154724.jpg' 
+duration 0.5 
 file 'cameraApi/media/images/00051539673100/2022/06/27/15/33/46/2022-06-27 15:33:46.723276.jpg' 
+duration 0.5 
 file 'cameraApi/media/images/00051539673100/2022/06/27/15/33/47/2022-06-27 15:33:47.275533.jpg' 
+duration 0.5 
 file 'cameraApi/media/images/00051539673100/2022/06/27/15/33/47/2022-06-27 15:33:47.865816.jpg' 
+duration 0.5 
 file 'cameraApi/media/images/00051539673100/2022/06/27/15/33/48/2022-06-27 15:33:48.437126.jpg' 
+duration 0.5 
 file 'cameraApi/media/images/00051539673100/2022/06/27/15/33/48/2022-06-27 15:33:48.992686.jpg' 
+duration 0.5 
+file 'cameraApi/media/images/00051539673100/2022/07/01/14/09/53/2022-07-01 14:09:53.783398.jpg' 
+duration 0.5 
+file 'cameraApi/media/images/00051539673100/2022/07/01/14/09/54/2022-07-01 14:09:54.326697.jpg' 
+duration 0.5 
+file 'cameraApi/media/images/00051539673100/2022/07/01/14/09/54/2022-07-01 14:09:54.924048.jpg' 
+duration 0.5 
+file 'cameraApi/media/images/00051539673100/2022/07/01/14/09/55/2022-07-01 14:09:55.514716.jpg' 
+duration 0.5 
+file 'cameraApi/media/images/00051539673100/2022/07/01/14/09/56/2022-07-01 14:09:56.019476.jpg' 
+duration 0.5 
+file 'cameraApi/media/images/00051539673100/2022/07/01/14/09/56/2022-07-01 14:09:56.599336.jpg' 
+duration 0.5 
+file 'cameraApi/media/images/00051539673100/2022/07/01/14/09/57/2022-07-01 14:09:57.176156.jpg' 
+duration 0.5 
+file 'cameraApi/media/images/00051539673100/2022/07/01/14/09/57/2022-07-01 14:09:57.700765.jpg' 
+duration 0.5 
+file 'cameraApi/media/images/00051539673100/2022/07/01/14/09/58/2022-07-01 14:09:58.203927.jpg' 
+duration 0.5 
+file 'cameraApi/media/images/00051539673100/2022/07/01/14/09/58/2022-07-01 14:09:58.711468.jpg' 
+duration 0.5 
+file 'cameraApi/media/images/00051539673100/2022/07/01/14/09/59/2022-07-01 14:09:59.225511.jpg' 
+duration 0.5 
+file 'cameraApi/media/images/00051539673100/2022/07/01/14/09/59/2022-07-01 14:09:59.759983.jpg' 
+duration 0.5 
+file 'cameraApi/media/images/00051539673100/2022/07/01/14/10/00/2022-07-01 14:10:00.343397.jpg' 
+duration 0.5 
+file 'cameraApi/media/images/00051539673100/2022/07/01/14/10/00/2022-07-01 14:10:00.928403.jpg' 
+duration 0.5 
+file 'cameraApi/media/images/00051539673100/2022/07/01/14/10/01/2022-07-01 14:10:01.506297.jpg' 
+duration 0.5 
+file 'cameraApi/media/images/00051539673100/2022/07/01/14/10/02/2022-07-01 14:10:02.087404.jpg' 
+duration 0.5 
+file 'cameraApi/media/images/00051539673100/2022/07/01/14/10/02/2022-07-01 14:10:02.613913.jpg' 
+duration 0.5 
+file 'cameraApi/media/images/00051539673100/2022/07/01/14/10/03/2022-07-01 14:10:03.139810.jpg' 
+duration 0.5 
+file 'cameraApi/media/images/00051539673100/2022/07/01/14/10/03/2022-07-01 14:10:03.692822.jpg' 
+duration 0.5 
+file 'cameraApi/media/images/00051539673100/2022/07/01/14/10/04/2022-07-01 14:10:04.195155.jpg' 
+duration 0.5 
+file 'cameraApi/media/images/00051539673100/2022/07/01/14/10/04/2022-07-01 14:10:04.709939.jpg' 
+duration 0.5 
+file 'cameraApi/media/images/00051539673100/2022/07/01/14/10/05/2022-07-01 14:10:05.283673.jpg' 
+duration 0.5 
+file 'cameraApi/media/images/00051539673100/2022/07/01/14/10/05/2022-07-01 14:10:05.852880.jpg' 
+duration 0.5 
+file 'cameraApi/media/images/00051539673100/2022/07/01/14/10/06/2022-07-01 14:10:06.431561.jpg' 
+duration 0.5 
+file 'cameraApi/media/images/00051539673100/2022/07/01/14/10/06/2022-07-01 14:10:06.995813.jpg' 
+duration 0.5 
+file 'cameraApi/media/images/00051539673100/2022/07/01/14/10/07/2022-07-01 14:10:07.519643.jpg' 
+duration 0.5 
+file 'cameraApi/media/images/00051539673100/2022/07/01/14/10/08/2022-07-01 14:10:08.120917.jpg' 
+duration 0.5 
+file 'cameraApi/media/images/00051539673100/2022/07/01/14/10/08/2022-07-01 14:10:08.713115.jpg' 
+duration 0.5 
+file 'cameraApi/media/images/00051539673100/2022/07/01/14/10/09/2022-07-01 14:10:09.282632.jpg' 
+duration 0.5 
+file 'cameraApi/media/images/00051539673100/2022/07/01/14/10/09/2022-07-01 14:10:09.871495.jpg' 
+duration 0.5 
+file 'cameraApi/media/images/00051539673100/2022/07/01/14/10/10/2022-07-01 14:10:10.443365.jpg' 
+duration 0.5 
+file 'cameraApi/media/images/00051539673100/2022/07/01/14/10/11/2022-07-01 14:10:11.020796.jpg' 
+duration 0.5 
+file 'cameraApi/media/images/00051539673100/2022/07/01/14/10/11/2022-07-01 14:10:11.582743.jpg' 
+duration 0.5 
+file 'cameraApi/media/images/00051539673100/2022/07/01/14/10/12/2022-07-01 14:10:12.084721.jpg' 
+duration 0.5 
+file 'cameraApi/media/images/00051539673100/2022/07/01/14/10/12/2022-07-01 14:10:12.613221.jpg' 
+duration 0.5 
+file 'cameraApi/media/images/00051539673100/2022/07/01/14/10/13/2022-07-01 14:10:13.114801.jpg' 
+duration 0.5 
+file 'cameraApi/media/images/00051539673100/2022/07/01/14/10/13/2022-07-01 14:10:13.682374.jpg' 
+duration 0.5 
+file 'cameraApi/media/images/00051539673100/2022/07/01/14/10/14/2022-07-01 14:10:14.245959.jpg' 
+duration 0.5 
+file 'cameraApi/media/images/00051539673100/2022/07/01/14/10/14/2022-07-01 14:10:14.753579.jpg' 
+duration 0.5 
+file 'cameraApi/media/images/00051539673100/2022/07/01/14/10/15/2022-07-01 14:10:15.303507.jpg' 
+duration 0.5 
+file 'cameraApi/media/images/00051539673100/2022/07/01/14/10/15/2022-07-01 14:10:15.855364.jpg' 
+duration 0.5 
+file 'cameraApi/media/images/00051539673100/2022/07/01/14/10/16/2022-07-01 14:10:16.454172.jpg' 
+duration 0.5 
+file 'cameraApi/media/images/00051539673100/2022/07/01/14/10/17/2022-07-01 14:10:17.016831.jpg' 
+duration 0.5 
+file 'cameraApi/media/images/00051539673100/2022/07/01/14/10/17/2022-07-01 14:10:17.529188.jpg' 
+duration 0.5 
+file 'cameraApi/media/images/00051539673100/2022/07/01/14/10/18/2022-07-01 14:10:18.038530.jpg' 
+duration 0.5 
+file 'cameraApi/media/images/00051539673100/2022/07/01/14/10/18/2022-07-01 14:10:18.555263.jpg' 
+duration 0.5 
+file 'cameraApi/media/images/00051539673100/2022/07/01/14/10/19/2022-07-01 14:10:19.072711.jpg' 
+duration 0.5 

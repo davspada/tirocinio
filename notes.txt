@@ -201,3 +201,10 @@ mi servirebbe il nome del file singolo da salvare in db
 
 
 https://github.com/kkroening/ffmpeg-python
+
+
+GESTORE GBS
+OBSERVER PATTERN
+https://italiancoders.it/observer-pattern/
+
+refactoring, aggiustare
