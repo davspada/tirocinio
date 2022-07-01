@@ -13,7 +13,7 @@ class Post_data:
     self.position = position
     self.name = name
 
-url = 'http://172.16.1.52:8000/camera/get_camera_frames'
+url = 'http://172.16.1.72:8000/camera/get_camera_frames'
 
 #files = {'frame': open('cameraApi/photo.jpg', 'rb')}
 values = {"path" : "soldati/soldato/13456abcde","timestamp":"2022-05-23 13:24:23", "position":"position10", "name" : "camera1"}
@@ -34,12 +34,13 @@ print(r.status_code)
 #print(r.content)
 
 lista = json.loads(r.content)
-f = open('output.txt', 'w+')
+f = open('paths.txt', 'w+')
 for i in lista:
   path = i['path']
   frame = i['frame']
   fullpath = path+frame
-  #print(fullpath)
+  print(fullpath)
+  #f.write(fullpath+'\n')
   f.write("file '"+fullpath+"' \n")
 f.close()
 

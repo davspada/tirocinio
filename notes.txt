@@ -197,4 +197,7 @@ f.close()
 
 mi servirebbe il nome del file singolo da salvare in db 
 
--serve capire lo stato di 
+-serve capire lo stato di progresso --> uso un wrapper
+
+
+https://github.com/kkroening/ffmpeg-python
