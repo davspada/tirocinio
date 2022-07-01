@@ -22,7 +22,7 @@ data3 = '2022-05-26T13:26:21.574020Z'
 #data1='2022/05/30 12:34:00'
 #data2='2022/05/30 12:34:29'
 data1='2022-06-27 11:47:30'
-data2='2022-06-27 18:48:30'
+data2='2022-07-27 18:48:30'
 
 reqvalues = {'name' :'00051539673100'}
 #r = requests.post(url, files=files, data=values, auth=auth)
@@ -42,6 +42,7 @@ for i in lista:
   print(fullpath)
   #f.write(fullpath+'\n')
   f.write("file '"+fullpath+"' \n")
+  f.write("duration 0.5 \n")
 f.close()
 
 #ffmpeg.input('output.txt', r='20', f='concat', safe='0').output('video.mp4', vcodec='libx264').run()
