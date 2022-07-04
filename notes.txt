@@ -124,9 +124,14 @@ TO DO
                 -programma principale
 
 -aggiustare single frame, magari con una query più specifica
--TASK CHE DATO UN INTERVALLO DI TEMPO NE CREA IL VIDEO
+---TASK CHE DATO UN INTERVALLO DI TEMPO NE CREA IL VIDEO
 -REFACTORING - UNIT TESTING
 -TEST DI INTEGRAZIONE
+-GESTORE GPS
+  OBSERVER PATTERN
+  https://italiancoders.it/observer-pattern/
+-task for progress video creator (tramite il wrapper)
+
 
 DELETE HOW TO
 processo in background che sarà schedulato per essere runnato giornalmente e che cancella sia la foto sia la entry nel db
@@ -203,8 +208,6 @@ mi servirebbe il nome del file singolo da salvare in db
 https://github.com/kkroening/ffmpeg-python
 
 
-GESTORE GBS
-OBSERVER PATTERN
-https://italiancoders.it/observer-pattern/
-
-refactoring, aggiustare
+DEPENDENCIES
+/home/alfredo/.local/lib/python3.10/site-packages
+ls -latr ---> per vederli in ordine
