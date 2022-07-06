@@ -7,7 +7,7 @@ from pathlib import Path
 import psycopg2
 import requests
 
-url = 'http://172.16.1.8:8000/camera/post_frame'
+url = 'http://172.16.1.83:8000/camera/post_frame'
 username = 'davide'
 password = 'password'
 
@@ -47,6 +47,7 @@ def process_data(queue, queue_post):
             #print("FRAME Q: "+str(queue.qsize()))
             data = queue.get()
             
+            position = data.position
             #resizes frame
             rframe = cv2.resize(data.frame, (0, 0), fx=0.25, fy=0.25) 
             fname = data.name
@@ -74,7 +75,7 @@ def process_data(queue, queue_post):
             cv2.imwrite(filenameandpath, rframe)
 
 
-            post_data = Post_data(filename, pathstring, ts,"position11", username, password, fname)
+            post_data = Post_data(filename, pathstring, ts, position, username, password, fname)
 
             queue_post.put(post_data)
             
