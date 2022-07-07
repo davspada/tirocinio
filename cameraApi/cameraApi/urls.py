@@ -18,11 +18,13 @@ from django.urls import include, path
 from camera_api import urls as camera_urls
 from django.conf import settings
 from django.conf.urls.static import static
+from interface import urls as interface_urls
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api-auth/', include('rest_framework.urls')),
     path('camera/', include(camera_urls)),
+    path('interface/', include(interface_urls))
 ]
 
 if settings.DEBUG:
