@@ -3,7 +3,8 @@ from .views import (
     DataListApiView,
     get_frames,
     post_frame,
-    get_frame
+    get_frame,
+    index
 )
 
 urlpatterns = [
@@ -11,5 +12,6 @@ urlpatterns = [
     path('all', DataListApiView.as_view()),
     path('post_frame', post_frame.as_view()),
     path('get_camera_frames', get_frames.as_view()),
-    path('get_camera_frame', get_frame.as_view())
+    path('get_camera_frame', get_frame.as_view()),
+    path('home', index, name= 'index')
 ]

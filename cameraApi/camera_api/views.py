@@ -126,3 +126,15 @@ class get_frame(APIView):
             lista.append(serializer.data)
         jsonlist = json.dumps(lista)
         return Response(data=jsonlist, status=status.HTTP_200_OK)
+
+#home of the web interface
+def index(request):
+    num_frames = Data.objects.count()
+    num_cameras = Data.objects.values('name').annotate(count=Count('name')).count()
+
+    context = {
+        'num_frames' : num_frames,
+        'num_cameras' : num_cameras,
+    }
+
+    return render(request, 'index.html', context = context)
