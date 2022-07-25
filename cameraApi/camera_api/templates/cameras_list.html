@@ -1,0 +1,14 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+    <h1>Cameras List</h1>
+    {% if cameras %}
+    <ul>
+        {% for camera in cameras %}
+        <li><a href="{{ data.get_absolute_url }}">{{ camera.name }}</a></li>
+        {% endfor %}
+    </ul>
+    {% else %}
+    <p>There are no cameras in the system.</p>
+  {% endif %}
+{% endblock %}

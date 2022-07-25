@@ -214,3 +214,7 @@ ls -latr ---> per vederli in ordine
 
 https://techexpert.tips/it/sonarqube-it/sonarqube-installazione-su-ubuntu-linux/
 https://developer.mozilla.org/en-US/docs/Learn/Server-side/Django/skeleton_website
+
+
+swagger
+https://django-rest-swagger.readthedocs.io/en/latest/

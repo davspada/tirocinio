@@ -4,8 +4,6 @@ import os
 from django.http import HttpResponse
 from django.shortcuts import redirect, render
 from numpy import integer
-#from dateutil import parser
-# Create your views here.
 from django.db.models import Count
 from rest_framework.views import APIView
 from rest_framework.response import Response
@@ -16,6 +14,10 @@ from .serializers import DataSerializer
 from .forms import *
 from itertools import chain
 from django.core.files.storage import default_storage
+from django.views import generic
+from rest_framework.renderers import TemplateHTMLRenderer
+from rest_framework.response import Response
+from rest_framework.views import APIView
 
 class DataListApiView(APIView):
     # add permission to check if user is authenticated
@@ -138,3 +140,24 @@ def index(request):
     }
 
     return render(request, 'index.html', context = context)
+
+class CameraList(APIView):
+    renderer_classes = [TemplateHTMLRenderer]
+    template_name = 'cameras_list.html'
+
+    def get(self, request):
+        queryset = Data.objects.values('name').distinct()
+        print(queryset)
+        return Response({'cameras': queryset})
+
+
+class CameraFrames(APIView):
+    renderer_classes = [TemplateHTMLRenderer]
+    template_name = 'camera_frames.html'
+    #reqname = request.data.get('name')
+    #requested_data = Data.objects.all().filter(name = reqname).order_by('timestamp')
+
+def camera_frames(request, rname):
+    requested_data = Data.objects.all().filter(name = rname).order_by('timestamp')
+    print(requested_data)
+    return render(request, 'camera_frames.html', context={'frames': requested_data})

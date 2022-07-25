@@ -1,0 +1,14 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+    <h1>Frames list</h1>
+    {% if frames %}
+    <ul>
+        {% for frame in cameras %}
+        <li>{{ frame.frame }}</li>
+        {% endfor %}
+    </ul>
+    {% else %}
+    <p>There are no frames for this camera in the system.</p>
+  {% endif %}
+{% endblock %}
