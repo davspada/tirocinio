@@ -18,4 +18,5 @@ urlpatterns = [
     path('home', index, name= 'index'),
     path('cameras_list', CameraList.as_view(), name = 'Cameras list'),
     path('<name>', camera_frames, name = 'name')
+    #path('<name>/interval',)
 ]

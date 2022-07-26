@@ -218,3 +218,11 @@ https://developer.mozilla.org/en-US/docs/Learn/Server-side/Django/skeleton_websi
 
 swagger
 https://django-rest-swagger.readthedocs.io/en/latest/
+
+
+formattare stringa data da script js
+dallo script stesso fare chiamata per prendere i frame nell'intervallo
+
+fare chiamata video
+
+gestione delete (dovrebbe essere simile a quella dell'intervallo)

@@ -5,7 +5,7 @@
     {% if cameras %}
     <ul>
         {% for camera in cameras %}
-        <li><a href="{{ data.get_absolute_url }}">{{ camera.name }}</a></li>
+        <li><a href="/camera/{{ camera.name }}">{{ camera.name }}</a></li>
         {% endfor %}
     </ul>
     {% else %}

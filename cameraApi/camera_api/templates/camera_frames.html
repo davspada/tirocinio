@@ -1,7 +1,23 @@
 {% extends "base_generic.html" %}
 
 {% block content %}
-    <h1>Frames list</h1>
+  <script>
+    submitForms = function(){
+      var now = new Date();
+      //now.setMinutes(now.getMinutes() - now.getTimezoneOffset());
+      //var date = document.getElementById('date3').value = now.toISOString().slice(0,16);
+      var sdate = document.getElementById('startdate').value
+      var edate = document.getElementById('enddate').value
+      console.log(sdate, edate)
+    }
+  </script>
+    <h1>FRAMES LIST</h1>
+    <p>
+      <h3>Select a time interval :</h3>
+      <input type="datetime-local"  id="startdate">
+      <input type="datetime-local"  id="enddate">  
+      <input type="button" value="Confirm" onclick="submitForms()" />
+    </p>
     {% if frames %}
     <ul>
         {% for frame in frames %}

@@ -141,6 +141,7 @@ def index(request):
 
     return render(request, 'index.html', context = context)
 
+#web
 class CameraList(APIView):
     renderer_classes = [TemplateHTMLRenderer]
     template_name = 'cameras_list.html'
@@ -150,13 +151,7 @@ class CameraList(APIView):
         print(queryset)
         return Response({'cameras': queryset})
 
-
-class CameraFrames(APIView):
-    renderer_classes = [TemplateHTMLRenderer]
-    template_name = 'camera_frames.html'
-    #reqname = request.data.get('name')
-    #requested_data = Data.objects.all().filter(name = reqname).order_by('timestamp')
-
+#web
 def camera_frames(request, name):
     requested_data = Data.objects.all().filter(name = name).order_by('timestamp')
     print(requested_data)
