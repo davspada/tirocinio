@@ -67,15 +67,16 @@ def process_data(queue, queue_post):
             fsecond = ts.strftime("%S")
             #print("second:", second)
 
-            pathstring = 'cameraApi/media/images/{name}/{year}/{month}/{day}/{hour}/{minute}/{second}/'.format(name=fname, year=fyear, month=fmonth, day=fday, hour=fhour, minute=fminute, second=fsecond)
+            pathstring_local = 'cameraApi/media/images/{name}/{year}/{month}/{day}/{hour}/{minute}/{second}/'.format(name=fname, year=fyear, month=fmonth, day=fday, hour=fhour, minute=fminute, second=fsecond)
+            pathstring_db = '/images/{name}/{year}/{month}/{day}/{hour}/{minute}/{second}/'.format(name=fname, year=fyear, month=fmonth, day=fday, hour=fhour, minute=fminute, second=fsecond)
 
-            os.makedirs(pathstring,exist_ok=True)
+            os.makedirs(pathstring_local,exist_ok=True)
             filename = str(ts)+".jpg"
-            filenameandpath = pathstring+str(ts)+".jpg"
+            filenameandpath = pathstring_local+str(ts)+".jpg"
             cv2.imwrite(filenameandpath, rframe)
 
 
-            post_data = Post_data(filename, pathstring, ts, position, username, password, fname)
+            post_data = Post_data(filename, pathstring_db, ts, position, username, password, fname)
 
             queue_post.put(post_data)
             

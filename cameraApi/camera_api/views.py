@@ -157,7 +157,7 @@ class CameraFrames(APIView):
     #reqname = request.data.get('name')
     #requested_data = Data.objects.all().filter(name = reqname).order_by('timestamp')
 
-def camera_frames(request, rname):
-    requested_data = Data.objects.all().filter(name = rname).order_by('timestamp')
+def camera_frames(request, name):
+    requested_data = Data.objects.all().filter(name = name).order_by('timestamp')
     print(requested_data)
     return render(request, 'camera_frames.html', context={'frames': requested_data})

@@ -4,8 +4,11 @@
     <h1>Frames list</h1>
     {% if frames %}
     <ul>
-        {% for frame in cameras %}
-        <li>{{ frame.frame }}</li>
+        {% for frame in frames %}
+        <li>{{ frame.frame }}
+          <img src="{{ frame.path }}{{ frame.frame }}">
+          <!--format ==== /images/00051539673100/2022/06/27/15/33/19/2022-06-27 15:33:19.093911.jpg-->
+        </li>
         {% endfor %}
     </ul>
     {% else %}

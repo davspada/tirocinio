@@ -17,5 +17,5 @@ urlpatterns = [
     path('get_camera_frame', get_frame.as_view()),
     path('home', index, name= 'index'),
     path('cameras_list', CameraList.as_view(), name = 'Cameras list'),
-    path('camera/<name>/', camera_frames, name = 'name')
+    path('<name>', camera_frames, name = 'name')
 ]
