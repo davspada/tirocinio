@@ -1,0 +1,12 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1>Camera System Home</h1>
+  <p>Welcome to Camera System home</p>
+  <h2>Records</h2>
+  <p>We have the following record counts:</p>
+  <ul>
+    <li><strong>Frames:</strong> {{ num_frames }}</li>
+    <li><strong>Cameras:</strong> {{ num_cameras }}</li>
+  </ul>
+{% endblock %}

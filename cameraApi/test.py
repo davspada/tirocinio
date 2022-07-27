@@ -13,12 +13,12 @@ class Post_data:
     self.position = position
     self.name = name
 
-url = 'http://172.16.1.72:8000/camera/get_camera_frames'
+url = 'http://172.16.1.30:8000/camera/get_camera_frames'
 
 #files = {'frame': open('cameraApi/photo.jpg', 'rb')}
-values = {"path" : "soldati/soldato/13456abcde","timestamp":"2022-05-23 13:24:23", "position":"position10", "name" : "camera1"}
+#values = {"path" : "soldati/soldato/13456abcde","timestamp":"2022-05-23 13:24:23", "position":"position10", "name" : "camera1"}
 auth=('davide','password')
-data3 = '2022-05-26T13:26:21.574020Z'
+#data3 = '2022-05-26T13:26:21.574020Z'
 #data1='2022/05/30 12:34:00'
 #data2='2022/05/30 12:34:29'
 data1='2022-06-27 11:47:30'

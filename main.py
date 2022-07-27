@@ -1,6 +1,8 @@
 import multiprocessing
+from threading import Thread
 import camera_multiprocess, consumer_process
 from camera_operations import populate_camera_list
+from gps import GPSReceiver, GPSSubject, get_gps_data
 
 processes_list = []
 queue_mp = multiprocessing.Queue()
@@ -14,10 +16,12 @@ def choose_cons_number():
     cons = int(input())
     return cons
 
+gpsubj = GPSSubject()
+
 for camera in camera_list:
     #print("trying to access ---"+camera.ip+ camera.port+ camera.user+camera.passw)
     name = camera.ip.replace(".","")
-    proc = multiprocessing.Process(target = camera_multiprocess.camera_process_func,args=(queue_mp, camera.ip, camera.port, camera.user, camera.passw))
+    proc = multiprocessing.Process(target = camera_multiprocess.camera_process_func,args=(queue_mp, camera.ip, camera.port, camera.user, camera.passw, gpsubj))
     processes_list.append(proc)
 
 

@@ -4,8 +4,6 @@ import os
 from django.http import HttpResponse
 from django.shortcuts import redirect, render
 from numpy import integer
-#from dateutil import parser
-# Create your views here.
 from django.db.models import Count
 from rest_framework.views import APIView
 from rest_framework.response import Response
@@ -16,6 +14,10 @@ from .serializers import DataSerializer
 from .forms import *
 from itertools import chain
 from django.core.files.storage import default_storage
+from django.views import generic
+from rest_framework.renderers import TemplateHTMLRenderer
+from rest_framework.response import Response
+from rest_framework.views import APIView
 
 class DataListApiView(APIView):
     # add permission to check if user is authenticated
@@ -126,3 +128,41 @@ class get_frame(APIView):
             lista.append(serializer.data)
         jsonlist = json.dumps(lista)
         return Response(data=jsonlist, status=status.HTTP_200_OK)
+
+#home of the web interface
+def index(request):
+    num_frames = Data.objects.count()
+    num_cameras = Data.objects.values('name').annotate(count=Count('name')).count()
+
+    context = {
+        'num_frames' : num_frames,
+        'num_cameras' : num_cameras,
+    }
+
+    return render(request, 'index.html', context = context)
+
+#web
+class CameraList(APIView):
+    renderer_classes = [TemplateHTMLRenderer]
+    template_name = 'cameras_list.html'
+
+    def get(self, request):
+        queryset = Data.objects.values('name').distinct()
+        print(queryset)
+        return Response({'cameras': queryset})
+
+#web
+def camera_frames(request, name):
+    requested_data = Data.objects.all().filter(name = name).order_by('timestamp')
+    #print(requested_data)
+    return render(request, 'camera_frames.html', context={'frames': requested_data, 'name': name})
+
+def camera_frames_interval(request, name, interval):
+    print("input"+name, interval)
+    interv = interval.split("$")
+    #print(interv)
+    sdate = interv[0].replace("_"," ")
+    edate = interv[1].replace("_"," ")
+    requested_data = Data.objects.all().filter(name = name, timestamp__gte = sdate, timestamp__lte=edate).order_by('timestamp')
+    #print(requested_data)
+    return render(request, 'camera_frames.html', context={'frames': requested_data, 'name': name, 'data1': sdate, 'data2': edate})

@@ -1,11 +1,12 @@
 from datetime import datetime
 import os
+from threading import Thread
 import time
 import cv2
 from requests import options
 import camera_operations
 from vidgear.gears import CamGear
-
+from gps import GPSReceiver, GPSSubject, get_gps_data
 
 #data package for consumer
 class Frame_data:
@@ -20,7 +21,7 @@ class Frame_data:
 
 
 #gets stream link, starts the capture, adds metadata to each frame and sends it to the queue
-def camera_process_func(queue, ip, port, user, password):
+def camera_process_func(queue, ip, port, user, password, Gps : GPSSubject):
     
     #gets camera stream link
     cam_link, name = camera_operations.getStreamLink(ip, port, user, password)
@@ -31,10 +32,12 @@ def camera_process_func(queue, ip, port, user, password):
     stream = CamGear(source=cam_link, logging=True, **options).start() #
     print("PROCESS {} STARTED ---- CAM : {}".format(os.getpid(), ip))
     
-    
+    th = Thread(target=get_gps_data,args=(Gps,))
+    th.start()
+
     #FPS = 1/TIMEOUT
-    TIMEOUT = 0
-    position = "lat 10 long 20"  #position placeholder
+    TIMEOUT = 0.5
+    #position = "lat 10 long 20"  #position placeholder
     
     old_timestamp = time.time()
     #LOOP FOR STREAM
@@ -42,7 +45,8 @@ def camera_process_func(queue, ip, port, user, password):
     #for i in range (50):
         frame = stream.read()
         timestamp = datetime.now()
-
+        position = Gps.get_position()
+        #print(position)
         if( time.time() - old_timestamp) > TIMEOUT:
           #reads frame and adds timestamp
 
@@ -64,6 +68,7 @@ def camera_process_func(queue, ip, port, user, password):
         
         if cv2.waitKey(1) & 0xFF == ord('q'):
             print("CAMERA STOPPED")
+            th._stop()
             break
 
     stream.stop()
