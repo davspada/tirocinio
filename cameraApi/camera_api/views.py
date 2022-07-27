@@ -154,5 +154,15 @@ class CameraList(APIView):
 #web
 def camera_frames(request, name):
     requested_data = Data.objects.all().filter(name = name).order_by('timestamp')
-    print(requested_data)
-    return render(request, 'camera_frames.html', context={'frames': requested_data})
+    #print(requested_data)
+    return render(request, 'camera_frames.html', context={'frames': requested_data, 'name': name})
+
+def camera_frames_interval(request, name, interval):
+    print("input"+name, interval)
+    interv = interval.split("$")
+    #print(interv)
+    sdate = interv[0].replace("_"," ")
+    edate = interv[1].replace("_"," ")
+    requested_data = Data.objects.all().filter(name = name, timestamp__gte = sdate, timestamp__lte=edate).order_by('timestamp')
+    #print(requested_data)
+    return render(request, 'camera_frames.html', context={'frames': requested_data, 'name': name, 'data1': sdate, 'data2': edate})

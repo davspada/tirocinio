@@ -1,33 +1,99 @@
 {% extends "base_generic.html" %}
 
 {% block content %}
+  <style>
+    div.gallery {
+    margin: 5px;
+    border: 1px solid #ccc;
+    float: left;
+    width: 180px;
+  }
+  
+  div.gallery:hover {
+    border: 1px solid #777;
+  }
+  
+  div.gallery img {
+    width: 100%;
+    height: auto;
+  }
+  
+  div.desc {
+    padding: 15px;
+    text-align: center;
+  }
+  </style>
   <script>
     submitForms = function(){
-      var now = new Date();
-      //now.setMinutes(now.getMinutes() - now.getTimezoneOffset());
-      //var date = document.getElementById('date3').value = now.toISOString().slice(0,16);
-      var sdate = document.getElementById('startdate').value
-      var edate = document.getElementById('enddate').value
-      console.log(sdate, edate)
+      //gets data from the forms in local time ---> returns it in UTC
+      var sdate = new Date(startdate.value)
+      var edate = new Date(enddate.value)
+      
+      sdate = formatDate(sdate)
+      edate = formatDate(edate)
+      
+      //api call
+      console.log("final dates : "+sdate, edate)
+      interval = sdate+"$"+edate
+      console.log(interval)
+      splitted_ulr = window.location.href.split("/")
+      camera_name = splitted_ulr[4]
+      window.location.replace('/camera/'+camera_name+'/'+interval);
     }
+
+    formatDate = function(date){
+     //formatting options
+      options = {
+        year: 'numeric', month: 'numeric', day: 'numeric',
+        hour: 'numeric', minute: 'numeric', second: 'numeric',
+        hour12: false,
+        timeZone: 'UTC'
+      };
+      //formats Date
+      var datenew = new Intl.DateTimeFormat('en-US', options).formatToParts(date);
+      //extracts values
+      parts = datenew.map(p=>p.value)
+      year = parts[4]
+      month = parts[0]
+      day = parts[2]
+      hour = parts[6]
+      minutes = parts[8]
+      var final_date = year+"-"+month+"-"+day+"_"+hour+":"+minutes+":00"
+      return final_date 
+    }
+
   </script>
-    <h1>FRAMES LIST</h1>
+    <h1>FRAMES LIST FOR CAMERA {{name}}</h1>
     <p>
       <h3>Select a time interval :</h3>
       <input type="datetime-local"  id="startdate">
       <input type="datetime-local"  id="enddate">  
       <input type="button" value="Confirm" onclick="submitForms()" />
     </p>
+    {% if data1 %}
+    <p>
+      FRAMES FROM {{data1}} TO {{data2}}
+    </p>
+    {% endif %}
     {% if frames %}
     <ul>
         {% for frame in frames %}
+        <div class="gallery">
+          <a target="_blank">
+            <img src="{{frame.path}}{{frame.frame}}" alt="frame">
+          </a>
+          <div class="desc">TIMESTAMP : {{frame.timestamp}} - POSITION : {{frame.position}}</div>
+        </div>
+
+        <!--
         <li>{{ frame.frame }}
           <img src="{{ frame.path }}{{ frame.frame }}">
-          <!--format ==== /images/00051539673100/2022/06/27/15/33/19/2022-06-27 15:33:19.093911.jpg-->
+          format ==== /images/00051539673100/2022/06/27/15/33/19/2022-06-27 15:33:19.093911.jpg
         </li>
+      -->
         {% endfor %}
     </ul>
     {% else %}
-    <p>There are no frames for this camera in the system.</p>
+    <p>There are no frames for this camera or in this time interval in the system.</p>
   {% endif %}
 {% endblock %}

@@ -3,6 +3,7 @@ from .views import (
     CameraList,
     DataListApiView,
     camera_frames,
+    camera_frames_interval,
     get_frames,
     post_frame,
     get_frame,
@@ -17,6 +18,6 @@ urlpatterns = [
     path('get_camera_frame', get_frame.as_view()),
     path('home', index, name= 'index'),
     path('cameras_list', CameraList.as_view(), name = 'Cameras list'),
-    path('<name>', camera_frames, name = 'name')
-    #path('<name>/interval',)
+    path('<name>', camera_frames, name = 'name'),
+    path('<name>/<interval>', camera_frames_interval, name = 'name')
 ]
