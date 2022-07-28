@@ -18,6 +18,7 @@ from django.views import generic
 from rest_framework.renderers import TemplateHTMLRenderer
 from rest_framework.response import Response
 from rest_framework.views import APIView
+import ffmpeg
 
 class DataListApiView(APIView):
     # add permission to check if user is authenticated
@@ -165,4 +166,19 @@ def camera_frames_interval(request, name, interval):
     edate = interv[1].replace("_"," ")
     requested_data = Data.objects.all().filter(name = name, timestamp__gte = sdate, timestamp__lte=edate).order_by('timestamp')
     #print(requested_data)
-    return render(request, 'camera_frames.html', context={'frames': requested_data, 'name': name, 'data1': sdate, 'data2': edate})
+    return render(request, 'interval_frames.html', context={'frames': requested_data, 'name': name, 'data1': sdate, 'data2': edate})
+
+
+def create_video(request, name, interval):
+    interv = interval.split("$")
+    sdate = interv[0].replace("_"," ")
+    edate = interv[1].replace("_"," ")
+    requested_data = Data.objects.all().filter(name = name, timestamp__gte = sdate, 
+        timestamp__lte=edate).order_by('timestamp').values_list('path', 'frame', 'name')
+    f = open('paths.txt', 'w+')
+    for i in requested_data.iterator():
+        print(i[1])
+        f.write("file '../cameraApi/media/"+i[0]+i[1]+"' \n")
+        f.write("duration 0.04 \n")
+    f.close
+    ffmpeg.input('paths.txt',f='concat',safe=0).output('../videos/{name}-{interval}.mkv'.format(name = name, interval=interval),c='libx264').run()

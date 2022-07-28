@@ -13,7 +13,7 @@ class Post_data:
     self.position = position
     self.name = name
 
-url = 'http://172.16.1.30:8000/camera/get_camera_frames'
+url = 'http://172.16.1.94:8000/camera/get_camera_frames'
 
 #files = {'frame': open('cameraApi/photo.jpg', 'rb')}
 #values = {"path" : "soldati/soldato/13456abcde","timestamp":"2022-05-23 13:24:23", "position":"position10", "name" : "camera1"}
@@ -45,7 +45,7 @@ for i in lista:
   f.write("duration 0.04 \n")
 f.close()
 
-#ffmpeg.input('output.txt', r='20', f='concat', safe='0').output('video.mp4', vcodec='libx264').run()
+ffmpeg.input('paths.txt', r='20', f='concat', safe='0').output('video.mp4', vcodec='libx264').run()
 
 
 """

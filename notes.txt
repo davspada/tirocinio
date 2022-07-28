@@ -226,3 +226,10 @@ dallo script stesso fare chiamata per prendere i frame nell'intervallo
 fare chiamata video
 
 gestione delete (dovrebbe essere simile a quella dell'intervallo)
+
+
+mi serve :
+  -gestire video già esistente
+  -sistemare data1 << data2 per forza -> altrimenti errore
+  -sistemare interfaccia
+  -creare libreria video (sia chiamata sia interaccia)
