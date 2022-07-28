@@ -37,18 +37,19 @@ def camera_process_func(queue, ip, port, user, password, Gps : GPSSubject):
 
     #FPS = 1/TIMEOUT
     TIMEOUT = 0.5
-    #position = "lat 10 long 20"  #position placeholder
     
     old_timestamp = time.time()
     #LOOP FOR STREAM
     while(True):
-    #for i in range (50):
+        #reads the frame      
         frame = stream.read()
+        #gets the timestamp
         timestamp = datetime.now()
+        #gets the position
         position = Gps.get_position()
-        #print(position)
+
+        #chooses if the frame is to be kept or skipped
         if( time.time() - old_timestamp) > TIMEOUT:
-          #reads frame and adds timestamp
 
           #do something with the frame
           #frame = cv2.resize(frame,(0,0), fx=0.25,fy=0.25)
@@ -65,7 +66,7 @@ def camera_process_func(queue, ip, port, user, password, Gps : GPSSubject):
           
           old_timestamp = time.time()
         
-        
+        #to stop showing cam if imshow()
         if cv2.waitKey(1) & 0xFF == ord('q'):
             print("CAMERA STOPPED")
             th._stop()

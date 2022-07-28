@@ -1,5 +1,6 @@
 from abc import ABCMeta, abstractmethod
 import socket
+from threading import Thread
 import pynmea2
 
 HOST = '172.16.0.183'
@@ -85,11 +86,18 @@ def get_gps_data(subject : GPSSubject):
             finally:
                 s.close()
 
-"""
+
 if __name__ == '__main__':
     gps = GPSSubject()
-    gps.get_gps_data()
-"""
+    th = Thread(target=get_gps_data,args=(gps,))
+    if(th.start()):
+        print("thread started")
+    else:
+        print("thread not started")
+    #get_gps_data(gps)
+    #while(True):
+    #    print(gps.get_position())
+
 
 """
 #MI INTERESSA GLLL --- prima lat poi long
