@@ -23,10 +23,17 @@
   }
   </style>
   <script>
+    var cam_name = window.location.href.split('/')[5]
+    document.getElementById("title").innerHTML = 'test'
   </script>
-    <h1>VIDEO GALLERY</h1>
-    <p>
-    </p>
+    <h1 id="title">VIDEO GALLERY</h1>
+    {% if cameras %}
+    <ul>
+      {% for camera in cameras %}
+      <li><a href="/camera/video_gallery/{{ camera.name }}">{{ camera.name }}</a></li>
+      {% endfor %}
+    </ul>
+    {% endif %}
     {% if videos %}
     <ul>
         {% for video in videos %}

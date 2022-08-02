@@ -79,8 +79,6 @@ class post_frame(APIView):
     def success(request):
         return HttpResponse('successfully uploaded')
 
-
-
 class get_frames(APIView):
 
     permission_classes=[permissions.IsAuthenticated]
@@ -104,7 +102,6 @@ class get_frames(APIView):
         print(serializer.data)
         requested_data.delete()
         return Response("deleted successfully", status=status.HTTP_200_OK)
-
 
 class get_frame(APIView):
 
@@ -143,58 +140,61 @@ def index(request):
 
     return render(request, 'index.html', context = context)
 
-#web
+#web - show list of registered cameras
 class CameraList(APIView):
     renderer_classes = [TemplateHTMLRenderer]
     template_name = 'cameras_list.html'
 
     def get(self, request):
         queryset = Data.objects.values('name').distinct()
-        print(queryset)
+        #print(queryset)
         return Response({'cameras': queryset})
 
-#web
+#web - show all frames for a given camera
 def camera_frames(request, name):
     requested_data = Data.objects.all().filter(name = name).order_by('timestamp')
     #print(requested_data)
     return render(request, 'camera_frames.html', context={'frames': requested_data, 'name': name})
 
+#web - show all frames for a given camera in a given interval
 def camera_frames_interval(request, name, interval):
     print("input"+name, interval)
     interv = interval.split("$")
-    #print(interv)
     sdate = interv[0].replace("_"," ")
     edate = interv[1].replace("_"," ")
     requested_data = Data.objects.all().filter(name = name, timestamp__gte = sdate, timestamp__lte=edate).order_by('timestamp')
-    #print(requested_data)
     return render(request, 'interval_frames.html', context={'frames': requested_data, 'name': name, 'data1': sdate, 'data2': edate})
 
-
+#web - create a video with the shown frames given the camera and interval
 def create_video(request, name, interval):
+    #refactors time interval
     interv = interval.split("$")
     sdate = interv[0].replace("_"," ")
     edate = interv[1].replace("_"," ")
     requested_data = Data.objects.all().filter(name = name, timestamp__gte = sdate, 
         timestamp__lte=edate).order_by('timestamp').values_list('path', 'frame', 'name')
+    #formats time interval for db entry
     interval_db = sdate+'-'+edate
     f = open('paths.txt', 'w+')
     for i in requested_data.iterator():
-        #print(i[1])
         f.write("file '../cameraApi/media/"+i[0]+i[1]+"' \n")
-        f.write("duration 0.04 \n")
+        f.write("duration 0.04 \n") #number can be parametric
     f.close
+    #writes video with 
     video_name = '{name}-{interval}.mp4'.format(name= name, interval = interval)
     os.makedirs('../cameraApi/media/videos/{name}/'.format(name= name),exist_ok=True)
     ffmpeg.input('paths.txt',f='concat',safe=0).output('../cameraApi/media/videos/{name}/{video_name}'.format(name= name, video_name = video_name),c='libx264').run()
+    #creates db entry for the created video
     video_instance = Video.objects.create(name =name , path='/videos/{name}/'.format(name = name), video= video_name, time_interval= interval_db)
-    render(request, 'video_created.html', context={'name' : name})
+    return render(request, 'video_created.html', context={'name' : name})
 
+#web - video gallery
 def get_all_videos(request):
     requested_data = Video.objects.all()
-    #print(requested_data)
-    return render(request, 'video_gallery.html', context={'videos' : requested_data})
+    camera_list = Video.objects.values('name').distinct()
+    return render(request, 'video_gallery.html', context={'videos' : requested_data, 'cameras' : camera_list})
 
+#web - video gallery for a given camera
 def get_camera_videos(request, name):
     requested_data = Video.objects.all().filter(name = name)
-    #print(requested_data)
     return render(request, 'video_gallery.html', context={'videos' : requested_data})

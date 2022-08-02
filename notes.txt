@@ -229,7 +229,9 @@ gestione delete (dovrebbe essere simile a quella dell'intervallo)
 
 
 mi serve :
-  -gestire video già esistente
   ---sistemare data1 << data2 per forza -> altrimenti errore
   -sistemare interfaccia
   ---creare libreria video (sia chiamata sia interaccia)
+  -video creation --> gestire errori ffmpeg
+    ---no frames
+    -esiste già

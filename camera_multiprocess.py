@@ -35,8 +35,8 @@ def camera_process_func(queue, ip, port, user, password, Gps : GPSSubject):
     th = Thread(target=get_gps_data,args=(Gps,))
     th.start()
 
-    #FPS = 1/TIMEOUT
-    TIMEOUT = 0.5
+    #FPS = 1/TIMEOUT  --- 1 for 1fps / 0 for ALL / 0.5 for 2fps
+    TIMEOUT = 0
     
     old_timestamp = time.time()
     #LOOP FOR STREAM
