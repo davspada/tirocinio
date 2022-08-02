@@ -29,16 +29,22 @@
       var sdate = new Date(startdate.value)
       var edate = new Date(enddate.value)
       
-      sdate = formatDate(sdate)
-      edate = formatDate(edate)
-      
-      //api call
-      console.log("final dates : "+sdate, edate)
-      interval = sdate+"$"+edate
-      console.log(interval)
-      splitted_ulr = window.location.href.split("/")
-      camera_name = splitted_ulr[4]
-      window.location.replace('/camera/'+camera_name+'/'+interval);
+      console.log(sdate.getTime() < edate.getTime())
+      if (((sdate.getTime() < edate.getTime()) || (sdate.getTime() == edate.getTime())) == true){
+        sdate = formatDate(sdate)
+        edate = formatDate(edate)
+        
+        //api call
+        console.log("final dates : "+sdate, edate)
+        interval = sdate+"$"+edate
+        console.log(interval)
+        splitted_ulr = window.location.href.split("/")
+        camera_name = splitted_ulr[4]
+        window.location.replace('/camera/'+camera_name+'/'+interval);
+      } 
+      else {
+        alert("Invalid time interval")
+      }
     }
 
     formatDate = function(date){

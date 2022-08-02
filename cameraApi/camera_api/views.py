@@ -1,4 +1,5 @@
 from datetime import timedelta,datetime
+from importlib.resources import path
 import json
 import os
 from django.http import HttpResponse
@@ -9,7 +10,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework import permissions
-from .models import Data
+from .models import Data, Video
 from .serializers import DataSerializer
 from .forms import *
 from itertools import chain
@@ -175,10 +176,25 @@ def create_video(request, name, interval):
     edate = interv[1].replace("_"," ")
     requested_data = Data.objects.all().filter(name = name, timestamp__gte = sdate, 
         timestamp__lte=edate).order_by('timestamp').values_list('path', 'frame', 'name')
+    interval_db = sdate+'-'+edate
     f = open('paths.txt', 'w+')
     for i in requested_data.iterator():
-        print(i[1])
+        #print(i[1])
         f.write("file '../cameraApi/media/"+i[0]+i[1]+"' \n")
         f.write("duration 0.04 \n")
     f.close
-    ffmpeg.input('paths.txt',f='concat',safe=0).output('../videos/{name}-{interval}.mkv'.format(name = name, interval=interval),c='libx264').run()
+    video_name = '{name}-{interval}.mp4'.format(name= name, interval = interval)
+    os.makedirs('../cameraApi/media/videos/{name}/'.format(name= name),exist_ok=True)
+    ffmpeg.input('paths.txt',f='concat',safe=0).output('../cameraApi/media/videos/{name}/{video_name}'.format(name= name, video_name = video_name),c='libx264').run()
+    video_instance = Video.objects.create(name =name , path='/videos/{name}/'.format(name = name), video= video_name, time_interval= interval_db)
+    render(request, 'video_created.html', context={'name' : name})
+
+def get_all_videos(request):
+    requested_data = Video.objects.all()
+    #print(requested_data)
+    return render(request, 'video_gallery.html', context={'videos' : requested_data})
+
+def get_camera_videos(request, name):
+    requested_data = Video.objects.all().filter(name = name)
+    #print(requested_data)
+    return render(request, 'video_gallery.html', context={'videos' : requested_data})
