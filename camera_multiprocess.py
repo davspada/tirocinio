@@ -34,7 +34,8 @@ def camera_process_func(queue, ip, port, user, password, Gps):
     stream = CamGear(source=cam_link, logging=True, **options).start() #
     print("PROCESS {} STARTED ---- CAM : {}".format(os.getpid(), ip))
     
-    gps_proc = multiprocessing.Process(target=get_gps_data,args=(Gps,))
+    gps_proc = Thread(target=get_gps_data,args=(Gps,))
+    gps_proc.setDaemon(True)
     gps_proc.start()
 
     #FPS = 1/TIMEOUT  --- 1 for 1fps / 0 for ALL / 0.5 for 2fps
