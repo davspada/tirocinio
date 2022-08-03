@@ -2,7 +2,7 @@ import multiprocessing
 from threading import Thread
 import camera_multiprocess, consumer_process
 from camera_operations import populate_camera_list
-from gps import GPSReceiver, GPSSubject, get_gps_data
+from gps import GPSSubject, get_gps_data
 
 processes_list = []
 queue_mp = multiprocessing.Queue()
