@@ -2,7 +2,7 @@ import multiprocessing
 from threading import Thread
 import camera_multiprocess, consumer_process
 from camera_operations import populate_camera_list
-from gps import GPSSubject, get_gps_data
+from gps import GPSSubject
 
 processes_list = []
 queue_mp = multiprocessing.Queue()
@@ -25,8 +25,7 @@ for camera in camera_list:
     processes_list.append(proc)
 
 
-#cn = choose_cons_number()
-cn = 2
+cn = choose_cons_number()
 for i in range(cn):
     cons = multiprocessing.Process(target=consumer_process.process_data,args=(queue_mp, queue_post))
     processes_list.append(cons)

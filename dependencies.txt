@@ -1,2 +1,14 @@
+requests
+zeep
+onvif
+python-onvif-zeep
+OpenCV
+opencv-python
+vidgear
+django
+djangorestframework
+psycopg2
+ffmpeg
+ffmpeg_python
 pynmea2 
 SISTEMA CHE REGISTRA IN UTC

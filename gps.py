@@ -20,7 +20,7 @@ def get_gps_data(subject : GPSSubject):
         with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
             try:
                 s.connect((HOST, PORT))
-                print('connected to socket')
+                print('Connected to gps socket')
                 while(True):
                     data = s.recv(1024).decode("utf-8")
                     splitted_data = data.split('\r\n',2)
