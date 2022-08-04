@@ -29,7 +29,7 @@
       //gets data from the forms in local time ---> returns it in UTC
       var sdate = new Date(startdate.value)
       var edate = new Date(enddate.value)
-
+      
       console.log(sdate.getTime() < edate.getTime())
       if (((sdate.getTime() < edate.getTime()) || (sdate.getTime() == edate.getTime())) == true){
         sdate = formatDate(sdate)
@@ -46,7 +46,6 @@
       else {
         alert("Invalid time interval")
       }
-      
     }
 
     formatDate = function(date){
@@ -70,6 +69,13 @@
       return final_date 
     }
 
+    goToVideoCreation = function(){
+        splitted_ulr = window.location.href.split("/")
+        camera_name = splitted_ulr[4]
+        interval = splitted_ulr[5]
+        window.location.replace('/camera/'+camera_name+'/'+interval+'/video');
+    }
+
   </script>
     <h1>FRAMES LIST FOR CAMERA {{name}}</h1>
     <p>
@@ -84,6 +90,7 @@
     </p>
     {% endif %}
     {% if frames %}
+    <input type="button" value="Create video" onclick="goToVideoCreation()"/>
     <ul>
         {% for frame in frames %}
         <div class="gallery">

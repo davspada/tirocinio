@@ -5,3 +5,9 @@ frames/
 images/
 *.mp4
 *.mkv
+*.zip
+/videos
+videos/
+cameraApi/paths.txt
+tests/*
+/tests/*

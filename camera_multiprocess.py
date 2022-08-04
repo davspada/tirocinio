@@ -1,4 +1,6 @@
 from datetime import datetime
+import multiprocessing
+from multiprocessing.dummy import Process
 import os
 from threading import Thread
 import time
@@ -6,7 +8,7 @@ import cv2
 from requests import options
 import camera_operations
 from vidgear.gears import CamGear
-from gps import GPSReceiver, GPSSubject, get_gps_data
+from gps import GPSSubject, get_gps_data
 
 #data package for consumer
 class Frame_data:
@@ -21,7 +23,7 @@ class Frame_data:
 
 
 #gets stream link, starts the capture, adds metadata to each frame and sends it to the queue
-def camera_process_func(queue, ip, port, user, password, Gps : GPSSubject):
+def camera_process_func(queue, ip, port, user, password, Gps):
     
     #gets camera stream link
     cam_link, name = camera_operations.getStreamLink(ip, port, user, password)
@@ -32,23 +34,25 @@ def camera_process_func(queue, ip, port, user, password, Gps : GPSSubject):
     stream = CamGear(source=cam_link, logging=True, **options).start() #
     print("PROCESS {} STARTED ---- CAM : {}".format(os.getpid(), ip))
     
-    th = Thread(target=get_gps_data,args=(Gps,))
-    th.start()
+    gps_proc = Thread(target=get_gps_data,args=(Gps,))
+    gps_proc.setDaemon(True)
+    gps_proc.start()
 
-    #FPS = 1/TIMEOUT
+    #FPS = 1/TIMEOUT  --- 1 for 1fps / 0 for ALL / 0.5 for 2fps
     TIMEOUT = 0.5
-    #position = "lat 10 long 20"  #position placeholder
     
     old_timestamp = time.time()
     #LOOP FOR STREAM
     while(True):
-    #for i in range (50):
+        #reads the frame      
         frame = stream.read()
+        #gets the timestamp
         timestamp = datetime.now()
+        #gets the position
         position = Gps.get_position()
-        #print(position)
+
+        #chooses if the frame is to be kept or skipped
         if( time.time() - old_timestamp) > TIMEOUT:
-          #reads frame and adds timestamp
 
           #do something with the frame
           #frame = cv2.resize(frame,(0,0), fx=0.25,fy=0.25)
@@ -65,10 +69,10 @@ def camera_process_func(queue, ip, port, user, password, Gps : GPSSubject):
           
           old_timestamp = time.time()
         
-        
+        #to stop showing cam if imshow()
         if cv2.waitKey(1) & 0xFF == ord('q'):
             print("CAMERA STOPPED")
-            th._stop()
+            gps_proc._stop()
             break
 
     stream.stop()

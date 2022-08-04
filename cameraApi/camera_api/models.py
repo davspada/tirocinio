@@ -21,3 +21,9 @@ class Data(models.Model):
     timestamp = models.DateTimeField(auto_now=False)
     position = models.CharField(max_length= 50)
     name = models.CharField(max_length= 50)
+
+class Video(models.Model):
+    name = models.CharField(max_length=100)
+    path = models.CharField(max_length=100)
+    video = models.CharField(max_length=100)
+    time_interval = models.CharField(max_length=100)

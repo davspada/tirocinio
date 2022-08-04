@@ -1,0 +1,51 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <style>
+    div.gallery {
+    margin: 5px;
+    border: 1px solid #ccc;
+    float: left;
+  }
+  
+  div.gallery:hover {
+    border: 1px solid #777;
+  }
+  
+  div.gallery video {
+    width: 100%;
+    height: auto;
+  }
+  
+  div.desc {
+    padding: 15px;
+    text-align: center;
+  }
+  </style>
+  <script>
+    var cam_name = window.location.href.split('/')[5]
+    document.getElementById("title").innerHTML = 'test'
+  </script>
+    <h1 id="title">VIDEO GALLERY</h1>
+    {% if cameras %}
+    <ul>
+      {% for camera in cameras %}
+      <li><a href="/camera/video_gallery/{{ camera.name }}">{{ camera.name }}</a></li>
+      {% endfor %}
+    </ul>
+    {% endif %}
+    {% if videos %}
+    <ul>
+        {% for video in videos %}
+        <div class="gallery">
+          <a target="_blank">
+            <video src="{{video.path}}{{video.video}}">
+          </a>
+          <div class="desc">TIMESTAMP : {{video.time_interval}}</div>
+        </div>
+        {% endfor %}
+    </ul>
+    {% else %}
+    <p>There are no videos in the system.</p>
+  {% endif %}
+{% endblock %}

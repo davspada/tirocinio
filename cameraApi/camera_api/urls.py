@@ -4,6 +4,9 @@ from .views import (
     DataListApiView,
     camera_frames,
     camera_frames_interval,
+    create_video,
+    get_all_videos,
+    get_camera_videos,
     get_frames,
     post_frame,
     get_frame,
@@ -18,6 +21,9 @@ urlpatterns = [
     path('get_camera_frame', get_frame.as_view()),
     path('home', index, name= 'index'),
     path('cameras_list', CameraList.as_view(), name = 'Cameras list'),
-    path('<name>', camera_frames, name = 'name'),
-    path('<name>/<interval>', camera_frames_interval, name = 'name')
+    path('video_gallery', get_all_videos, name = 'video gallery'),
+    path('video_gallery/<name>', get_camera_videos),
+    path('<name>', camera_frames, name = 'camera frames'),
+    path('<name>/<interval>', camera_frames_interval, name = 'camera frames interval'),
+    path('<name>/<interval>/video', create_video)
 ]

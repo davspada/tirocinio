@@ -96,9 +96,6 @@ se esiste salva il pacchetto dati, altrimenti crea il path e poi lo salva
 - i consumatori fanno infinitamente un check se la lista è vuota, quando non lo è prendono il dato
     (qui c'è da provare se effettivamente c'è bisogno o meno di un semaforo per put/get)
 
-valkka library
-
-
 #TODO
 -----NUMERO DI CONSUMATORI PARAMETRICO
 -----GRAB E RETRIEVE, VALUTARE PRESTAZIONI ---> grab e retrieve perde molti frames
@@ -106,7 +103,7 @@ valkka library
 
 -------------------------
 discover dei dispositivi compatibili con onvif, invece di prendere la roba dal JSON
----CREAZIONE AUTOMATICA FOLDERS
+-----CREAZIONE AUTOMATICA FOLDERS
 
 
 monitor del file system che controlla lo stato dei file e updata di conseguenza il db
@@ -120,10 +117,10 @@ TO DO
 ---rifinire get single frame e documentare utilizzo
         (fare funzione per formattare dati from input ---> generare chiamata api formattata come serve)
 ---gestire push to api/api storage dal programma principale(es: tenere 1 fps x invio)
--refactoring    -api
+---refactoring    -api
                 -programma principale
 
--aggiustare single frame, magari con una query più specifica
+---(i)aggiustare single frame, magari con una query più specifica
 ---TASK CHE DATO UN INTERVALLO DI TEMPO NE CREA IL VIDEO
 -REFACTORING - UNIT TESTING
 -TEST DI INTEGRAZIONE
@@ -226,3 +223,238 @@ dallo script stesso fare chiamata per prendere i frame nell'intervallo
 fare chiamata video
 
 gestione delete (dovrebbe essere simile a quella dell'intervallo)
+
+
+mi serve :
+  ---sistemare data1 << data2 per forza -> altrimenti errore
+  -sistemare interfaccia
+  ---creare libreria video (sia chiamata sia interaccia)
+  -video creation --> gestire errori ffmpeg
+    ---no frames
+    -esiste già
+
+drwxrwxr-x   3 alfredo alfredo    4096 Apr 29 09:39 ..
+drwxrwxr-x   5 alfredo alfredo    4096 May  2 09:27 sqlparse
+drwxrwxr-x   2 alfredo alfredo    4096 May  2 09:27 sqlparse-0.4.2.dist-info
+-rw-rw-r--   1 alfredo alfredo    4324 May  2 09:27 cached_property.py
+drwxrwxr-x   2 alfredo alfredo    4096 May  2 09:27 cached_property-1.5.2.dist-info
+drwxrwxr-x  10 alfredo alfredo    4096 May  2 09:27 requests_toolbelt
+drwxrwxr-x   2 alfredo alfredo    4096 May  2 09:27 requests_toolbelt-0.9.1.dist-info
+-rw-rw-r--   1 alfredo alfredo    4729 May  2 09:27 requests_file.py
+drwxrwxr-x   2 alfredo alfredo    4096 May  2 09:27 requests_file-1.5.1.dist-info
+drwxrwxr-x   3 alfredo alfredo    4096 May  2 09:27 platformdirs
+drwxrwxr-x   3 alfredo alfredo    4096 May  2 09:27 platformdirs-2.5.2.dist-info
+drwxrwxr-x   4 alfredo alfredo    4096 May  2 09:27 isodate
+drwxrwxr-x   2 alfredo alfredo    4096 May  2 09:27 isodate-0.6.1.dist-info
+drwxrwxr-x   6 alfredo alfredo    4096 May  2 09:27 zeep
+drwxrwxr-x   2 alfredo alfredo    4096 May  2 09:27 zeep-4.1.0.dist-info
+drwxrwxr-x   2 alfredo alfredo    4096 May  2 09:27 wsdl
+drwxrwxr-x   3 alfredo alfredo    4096 May  2 09:27 onvif
+drwxrwxr-x   2 alfredo alfredo    4096 May  2 09:27 onvif_zeep-0.2.12.dist-info
+drwxrwxr-x   4 alfredo alfredo    4096 May 12 11:20 easyprocess
+drwxrwxr-x   2 alfredo alfredo    4096 May 12 11:20 EasyProcess-1.1.dist-info
+-rw-rw-r--   1 alfredo alfredo    1857 May 12 11:20 brotli.py
+-rwxrwxr-x   1 alfredo alfredo 6726712 May 12 11:20 _brotli.cpython-310-x86_64-linux-gnu.so
+drwxrwxr-x   2 alfredo alfredo    4096 May 12 11:20 Brotli-1.0.9.dist-info
+drwxrwxr-x   5 alfredo alfredo    4096 May 12 11:20 websockets
+drwxrwxr-x   2 alfredo alfredo    4096 May 12 11:20 websockets-10.3.dist-info
+drwxrwxr-x   4 alfredo alfredo    4096 May 12 11:20 tqdm
+drwxrwxr-x   2 alfredo alfredo    4096 May 12 11:20 tqdm-4.64.0.dist-info
+drwxrwxr-x   3 alfredo alfredo    4096 May 12 11:20 simplejpeg
+drwxrwxr-x   2 alfredo alfredo    4096 May 12 11:20 simplejpeg-1.6.4.dist-info
+drwxrwxr-x   9 alfredo alfredo    4096 May 12 11:20 mutagen
+drwxrwxr-x   2 alfredo alfredo    4096 May 12 11:20 mutagen-1.45.1.dist-info
+drwxrwxr-x   4 alfredo alfredo    4096 May 12 11:20 mss
+drwxrwxr-x   2 alfredo alfredo    4096 May 12 11:20 mss-6.1.0.dist-info
+drwxrwxr-x   3 alfredo alfredo    4096 May 12 11:20 colorlog
+drwxrwxr-x   2 alfredo alfredo    4096 May 12 11:20 colorlog-6.6.0.dist-info
+drwxrwxr-x   7 alfredo alfredo    4096 May 12 11:20 pyscreenshot
+drwxrwxr-x   2 alfredo alfredo    4096 May 12 11:20 pyscreenshot-3.0.dist-info
+drwxrwxr-x   2 alfredo alfredo    4096 May 12 11:20 av.libs
+drwxrwxr-x  11 alfredo alfredo    4096 May 12 11:20 av
+drwxrwxr-x   3 alfredo alfredo    4096 May 12 11:20 av-9.2.0.dist-info
+drwxrwxr-x   4 alfredo alfredo    4096 May 12 11:20 sniffio
+drwxrwxr-x   2 alfredo alfredo    4096 May 12 11:20 sniffio-1.2.0.dist-info
+drwxrwxr-x   4 alfredo alfredo    4096 May 12 11:20 pycparser
+drwxrwxr-x   2 alfredo alfredo    4096 May 12 11:20 pycparser-2.21.dist-info
+drwxrwxr-x   4 alfredo alfredo    4096 May 12 11:20 h11
+drwxrwxr-x   2 alfredo alfredo    4096 May 12 11:20 h11-0.13.0.dist-info
+drwxrwxr-x   2 alfredo alfredo    4096 May 12 11:20 google_crc32c.libs
+drwxrwxr-x   3 alfredo alfredo    4096 May 12 11:20 google_crc32c
+drwxrwxr-x   2 alfredo alfredo    4096 May 12 11:20 google_crc32c-1.3.0.dist-info
+drwxrwxr-x   4 alfredo alfredo    4096 May 12 11:20 dns
+drwxrwxr-x   2 alfredo alfredo    4096 May 12 11:20 dnspython-2.2.1.dist-info
+drwxrwxr-x   3 alfredo alfredo    4096 May 12 11:20 pyee
+drwxrwxr-x   2 alfredo alfredo    4096 May 12 11:20 pyee-9.0.4.dist-info
+drwxrwxr-x   3 alfredo alfredo    4096 May 12 11:20 aioice
+drwxrwxr-x   2 alfredo alfredo    4096 May 12 11:20 aioice-0.7.6.dist-info
+drwxrwxr-x   3 alfredo alfredo    4096 May 12 11:20 pylibsrtp
+drwxrwxr-x   2 alfredo alfredo    4096 May 12 11:20 pylibsrtp-0.7.1.dist-info
+drwxrwxr-x   5 alfredo alfredo    4096 May 12 11:20 aiortc
+drwxrwxr-x   2 alfredo alfredo    4096 May 12 11:20 aiortc-1.3.2.dist-info
+drwxrwxr-x  11 alfredo alfredo    4096 May 17 10:08 rest_framework
+drwxrwxr-x   2 alfredo alfredo    4096 May 17 10:08 djangorestframework-3.13.1.dist-info
+-rw-rw-r--   1 alfredo alfredo    5078 May 19 10:16 mypy_extensions.py
+drwxrwxr-x   2 alfredo alfredo    4096 May 19 10:16 mypy_extensions-0.4.3.dist-info
+drwxrwxr-x   3 alfredo alfredo    4096 May 19 10:16 tomli
+drwxrwxr-x   2 alfredo alfredo    4096 May 19 10:16 tomli-2.0.1.dist-info
+drwxrwxr-x   5 alfredo alfredo    4096 May 19 10:16 pathspec
+drwxrwxr-x   2 alfredo alfredo    4096 May 19 10:16 pathspec-0.9.0.dist-info
+drwxrwxr-x   4 alfredo alfredo    4096 May 19 10:44 wsdiscovery
+drwxrwxr-x   2 alfredo alfredo    4096 May 19 10:44 WSDiscovery-2.0.0.dist-info
+drwxrwxr-x   3 alfredo alfredo    4096 May 19 12:32 toml
+drwxrwxr-x   2 alfredo alfredo    4096 May 19 12:32 toml-0.10.2.dist-info
+-rw-rw-r--   1 alfredo alfredo  155367 May 19 12:32 autopep8.py
+drwxrwxr-x   2 alfredo alfredo    4096 May 19 12:32 autopep8-1.6.0.dist-info
+drwxrwxr-x   2 alfredo alfredo    4096 Jun  8 12:45 psycopg2_binary.libs
+drwxrwxr-x   3 alfredo alfredo    4096 Jun  8 12:45 psycopg2
+drwxrwxr-x   2 alfredo alfredo    4096 Jun  8 12:45 psycopg2_binary-2.9.3.dist-info
+drwxrwxr-x   3 alfredo alfredo    4096 Jun 13 15:07 ffmpeg
+drwxrwxr-x   2 alfredo alfredo    4096 Jun 13 15:07 ffmpeg_python-0.2.0.dist-info
+drwxrwxr-x   4 alfredo alfredo    4096 Jul  4 11:35 pynmea2
+drwxrwxr-x   2 alfredo alfredo    4096 Jul  4 11:35 pynmea2-1.18.0.dist-info
+drwxrwxr-x   7 alfredo alfredo    4096 Aug  3 10:19 anyio
+drwxrwxr-x   2 alfredo alfredo    4096 Aug  3 10:19 anyio-3.6.1.dist-info
+drwxrwxr-x   3 alfredo alfredo    4096 Aug  3 10:19 asgiref
+drwxrwxr-x   2 alfredo alfredo    4096 Aug  3 10:19 asgiref-3.5.2.dist-info
+drwxrwxr-x   3 alfredo alfredo    4096 Aug  3 10:19 attr
+drwxrwxr-x   3 alfredo alfredo    4096 Aug  3 10:19 attrs
+drwxrwxr-x   2 alfredo alfredo    4096 Aug  3 10:19 attrs-22.1.0.dist-info
+drwxrwxr-x   6 alfredo alfredo    4096 Aug  3 10:19 babel
+drwxrwxr-x   2 alfredo alfredo    4096 Aug  3 10:19 Babel-2.10.3.dist-info
+drwxrwxr-x   3 alfredo alfredo    4096 Aug  3 10:19 bcrypt
+drwxrwxr-x   2 alfredo alfredo    4096 Aug  3 10:19 bcrypt-3.2.2.dist-info
+drwxrwxr-x   3 alfredo alfredo    4096 Aug  3 10:19 blinker
+drwxrwxr-x   2 alfredo alfredo    4096 Aug  3 10:19 blinker-1.5.dist-info
+drwxrwxr-x   3 alfredo alfredo    4096 Aug  3 10:19 certifi
+drwxrwxr-x   2 alfredo alfredo    4096 Aug  3 10:19 certifi-2022.6.15.dist-info
+-rwxrwxr-x   1 alfredo alfredo  983760 Aug  3 10:19 _cffi_backend.cpython-310-x86_64-linux-gnu.so
+drwxrwxr-x   3 alfredo alfredo    4096 Aug  3 10:19 cffi
+drwxrwxr-x   2 alfredo alfredo    4096 Aug  3 10:19 cffi-1.15.1.dist-info
+drwxrwxr-x   5 alfredo alfredo    4096 Aug  3 10:19 chardet
+drwxrwxr-x   2 alfredo alfredo    4096 Aug  3 10:19 chardet-5.0.0.dist-info
+drwxrwxr-x   3 alfredo alfredo    4096 Aug  3 10:20 click
+drwxrwxr-x   2 alfredo alfredo    4096 Aug  3 10:20 click-8.1.3.dist-info
+drwxrwxr-x   3 alfredo alfredo    4096 Aug  3 10:20 colorama
+drwxrwxr-x   2 alfredo alfredo    4096 Aug  3 10:20 colorama-0.4.5.dist-info
+drwxrwxr-x   5 alfredo alfredo    4096 Aug  3 10:20 cryptography
+drwxrwxr-x   2 alfredo alfredo    4096 Aug  3 10:20 cryptography-37.0.4.dist-info
+-rw-rw-r--   1 alfredo alfredo     520 Aug  3 10:20 cython.py
+drwxrwxr-x  13 alfredo alfredo    4096 Aug  3 10:20 Cython
+drwxrwxr-x   3 alfredo alfredo    4096 Aug  3 10:20 pyximport
+drwxrwxr-x   2 alfredo alfredo    4096 Aug  3 10:20 Cython-0.29.32.dist-info
+-rw-rw-r--   1 alfredo alfredo   12479 Aug  3 10:20 distro_info.py
+drwxrwxr-x   2 alfredo alfredo    4096 Aug  3 10:20 distro_info-1.0.dist-info
+drwxrwxr-x  18 alfredo alfredo    4096 Aug  3 10:20 django
+drwxrwxr-x   2 alfredo alfredo    4096 Aug  3 10:20 Django-4.0.7.dist-info
+drwxrwxr-x   5 alfredo alfredo    4096 Aug  3 10:20 entrypoint2
+drwxrwxr-x   2 alfredo alfredo    4096 Aug  3 10:20 entrypoint2-1.1.dist-info
+drwxrwxr-x   4 alfredo alfredo    4096 Aug  3 10:20 fasteners
+drwxrwxr-x   2 alfredo alfredo    4096 Aug  3 10:20 fasteners-0.17.3.dist-info
+drwxrwxr-x   3 alfredo alfredo    4096 Aug  3 10:20 httplib2
+drwxrwxr-x   2 alfredo alfredo    4096 Aug  3 10:20 httplib2-0.20.4.dist-info
+drwxrwxr-x   3 alfredo alfredo    4096 Aug  3 10:20 importlib_metadata
+drwxrwxr-x   2 alfredo alfredo    4096 Aug  3 10:20 importlib_metadata-4.12.0.dist-info
+drwxrwxr-x   5 alfredo alfredo    4096 Aug  3 10:20 jeepney
+drwxrwxr-x   2 alfredo alfredo    4096 Aug  3 10:20 jeepney-0.8.0.dist-info
+drwxrwxr-x   3 alfredo alfredo    4096 Aug  3 10:20 jinja2
+drwxrwxr-x   2 alfredo alfredo    4096 Aug  3 10:20 Jinja2-3.1.2.dist-info
+-rw-rw-r--   1 alfredo alfredo   10964 Aug  3 10:20 jsonpointer.py
+drwxrwxr-x   2 alfredo alfredo    4096 Aug  3 10:20 jsonpointer-2.3.dist-info
+drwxrwxr-x   6 alfredo alfredo    4096 Aug  3 10:20 jsonschema
+drwxrwxr-x   3 alfredo alfredo    4096 Aug  3 10:20 jsonschema-4.9.0.dist-info
+drwxrwxr-x   6 alfredo alfredo    4096 Aug  3 10:20 keyring
+drwxrwxr-x   2 alfredo alfredo    4096 Aug  3 10:20 keyring-23.7.0.dist-info
+drwxrwxr-x   6 alfredo alfredo    4096 Aug  3 10:20 lxml
+drwxrwxr-x   2 alfredo alfredo    4096 Aug  3 10:20 lxml-4.9.1.dist-info
+drwxrwxr-x   5 alfredo alfredo    4096 Aug  3 10:20 mako
+drwxrwxr-x   2 alfredo alfredo    4096 Aug  3 10:20 Mako-1.2.1.dist-info
+drwxrwxr-x   3 alfredo alfredo    4096 Aug  3 10:20 markupsafe
+drwxrwxr-x   2 alfredo alfredo    4096 Aug  3 10:20 MarkupSafe-2.1.1.dist-info
+drwxrwxr-x   3 alfredo alfredo    4096 Aug  3 10:20 more_itertools
+drwxrwxr-x   2 alfredo alfredo    4096 Aug  3 10:20 more_itertools-8.13.0.dist-info
+drwxrwxr-x   3 alfredo alfredo    4096 Aug  3 10:20 msgpack
+drwxrwxr-x   2 alfredo alfredo    4096 Aug  3 10:20 msgpack-1.0.4.dist-info
+-rw-rw-r--   1 alfredo alfredo   11790 Aug  3 10:20 msgpack_numpy.py
+drwxrwxr-x   2 alfredo alfredo    4096 Aug  3 10:20 msgpack_numpy-0.4.8.dist-info
+-rwxrwxr-x   1 alfredo alfredo   67056 Aug  3 10:21 netifaces.cpython-310-x86_64-linux-gnu.so
+drwxrwxr-x   2 alfredo alfredo    4096 Aug  3 10:21 netifaces-0.11.0.dist-info
+drwxrwxr-x   2 alfredo alfredo    4096 Aug  3 10:21 numpy.libs
+drwxrwxr-x  21 alfredo alfredo    4096 Aug  3 10:21 numpy
+drwxrwxr-x   2 alfredo alfredo    4096 Aug  3 10:21 numpy-1.23.1.dist-info
+drwxrwxr-x   2 alfredo alfredo    4096 Aug  3 10:21 opencv_python.libs
+drwxrwxr-x   9 alfredo alfredo    4096 Aug  3 10:21 cv2
+drwxrwxr-x   2 alfredo alfredo    4096 Aug  3 10:21 opencv_python-4.6.0.66.dist-info
+drwxrwxr-x   3 alfredo alfredo    4096 Aug  3 10:21 paramiko
+drwxrwxr-x   2 alfredo alfredo    4096 Aug  3 10:21 paramiko-2.11.0.dist-info
+drwxrwxr-x   2 alfredo alfredo    4096 Aug  3 10:21 Pillow.libs
+drwxrwxr-x   3 alfredo alfredo    4096 Aug  3 10:21 PIL
+drwxrwxr-x   2 alfredo alfredo    4096 Aug  3 10:21 Pillow-9.2.0.dist-info
+drwxrwxr-x   5 alfredo alfredo    4096 Aug  3 10:21 pip
+drwxrwxr-x   2 alfredo alfredo    4096 Aug  3 10:21 pip-22.2.1.dist-info
+drwxrwxr-x   4 alfredo alfredo    4096 Aug  3 10:21 google
+drwxrwxr-x   2 alfredo alfredo    4096 Aug  3 10:21 protobuf-4.21.4.dist-info
+drwxrwxr-x   3 alfredo alfredo    4096 Aug  3 10:21 pyasn1_modules
+drwxrwxr-x   2 alfredo alfredo    4096 Aug  3 10:21 pyasn1_modules-0.2.8.dist-info
+-rw-rw-r--   1 alfredo alfredo  103429 Aug  3 10:21 pycodestyle.py
+drwxrwxr-x   2 alfredo alfredo    4096 Aug  3 10:21 pycodestyle-2.9.0.dist-info
+drwxrwxr-x  13 alfredo alfredo    4096 Aug  3 10:21 Cryptodome
+drwxrwxr-x   2 alfredo alfredo    4096 Aug  3 10:21 pycryptodomex-3.15.0.dist-info
+drwxrwxr-x   5 alfredo alfredo    4096 Aug  3 10:22 hamcrest
+drwxrwxr-x   2 alfredo alfredo    4096 Aug  3 10:22 PyHamcrest-2.0.3.dist-info
+drwxrwxr-x   3 alfredo alfredo    4096 Aug  3 10:22 OpenSSL
+drwxrwxr-x   2 alfredo alfredo    4096 Aug  3 10:22 pyOpenSSL-22.0.0.dist-info
+drwxrwxr-x   4 alfredo alfredo    4096 Aug  3 10:22 pyparsing
+drwxrwxr-x   2 alfredo alfredo    4096 Aug  3 10:22 pyparsing-3.0.9.dist-info
+drwxrwxr-x   6 alfredo alfredo    4096 Aug  3 10:22 dateutil
+drwxrwxr-x   2 alfredo alfredo    4096 Aug  3 10:22 python_dateutil-2.8.2.dist-info
+-rw-rw-r--   1 alfredo alfredo     273 Aug  3 10:22 deb822.py
+drwxrwxr-x   4 alfredo alfredo    4096 Aug  3 10:22 debian
+drwxrwxr-x   3 alfredo alfredo    4096 Aug  3 10:22 debian_bundle
+drwxrwxr-x   2 alfredo alfredo    4096 Aug  3 10:22 python_debian-0.1.44.dist-info
+drwxrwxr-x   2 alfredo alfredo    4096 Aug  3 10:22 pyxdg-0.28.dist-info
+drwxrwxr-x   3 alfredo alfredo    4096 Aug  3 10:22 _yaml
+drwxrwxr-x   3 alfredo alfredo    4096 Aug  3 10:22 yaml
+drwxrwxr-x   2 alfredo alfredo    4096 Aug  3 10:22 PyYAML-6.0.dist-info
+drwxrwxr-x   2 alfredo alfredo    4096 Aug  3 10:22 pyzmq.libs
+drwxrwxr-x  13 alfredo alfredo    4096 Aug  3 10:22 zmq
+drwxrwxr-x   2 alfredo alfredo    4096 Aug  3 10:22 pyzmq-23.2.0.dist-info
+drwxrwxr-x   2 alfredo alfredo    4096 Aug  3 10:22 reportlab.libs
+drwxrwxr-x   9 alfredo alfredo    4096 Aug  3 10:22 reportlab
+drwxrwxr-x   2 alfredo alfredo    4096 Aug  3 10:22 reportlab-3.6.11.dist-info
+drwxrwxr-x   5 alfredo alfredo    4096 Aug  3 10:22 charset_normalizer
+drwxrwxr-x   2 alfredo alfredo    4096 Aug  3 10:22 charset_normalizer-2.1.0.dist-info
+drwxrwxr-x   3 alfredo alfredo    4096 Aug  3 10:22 requests
+drwxrwxr-x   2 alfredo alfredo    4096 Aug  3 10:22 requests-2.28.1.dist-info
+drwxrwxr-x   3 alfredo alfredo    4096 Aug  3 10:22 secretstorage
+drwxrwxr-x   2 alfredo alfredo    4096 Aug  3 10:22 SecretStorage-3.3.2.dist-info
+drwxrwxr-x   3 alfredo alfredo    4096 Aug  3 10:22 service_identity
+drwxrwxr-x   2 alfredo alfredo    4096 Aug  3 10:22 service_identity-21.1.0.dist-info
+-rw-rw-r--   1 alfredo alfredo     151 Aug  3 10:22 distutils-precedence.pth
+drwxrwxr-x   3 alfredo alfredo    4096 Aug  3 10:22 _distutils_hack
+drwxrwxr-x   5 alfredo alfredo    4096 Aug  3 10:22 pkg_resources
+drwxrwxr-x   8 alfredo alfredo    4096 Aug  3 10:22 setuptools
+drwxrwxr-x   2 alfredo alfredo    4096 Aug  3 10:22 setuptools-63.4.0.dist-info
+drwxrwxr-x   4 alfredo alfredo    4096 Aug  3 10:22 starlette
+drwxrwxr-x   2 alfredo alfredo    4096 Aug  3 10:22 starlette-0.20.4.dist-info
+drwxrwxr-x   9 alfredo alfredo    4096 Aug  3 10:22 suds
+drwxrwxr-x   2 alfredo alfredo    4096 Aug  3 10:22 suds-1.1.2.dist-info
+drwxrwxr-x  26 alfredo alfredo    4096 Aug  3 10:22 twisted
+drwxrwxr-x   2 alfredo alfredo    4096 Aug  3 10:22 Twisted-22.4.0.dist-info
+-rw-rw-r--   1 alfredo alfredo   75384 Aug  3 10:22 typing_extensions.py
+drwxrwxr-x   2 alfredo alfredo    4096 Aug  3 10:22 typing_extensions-4.3.0.dist-info
+drwxrwxr-x   6 alfredo alfredo    4096 Aug  3 10:22 urllib3
+drwxrwxr-x   2 alfredo alfredo    4096 Aug  3 10:22 urllib3-1.26.11.dist-info
+drwxrwxr-x   8 alfredo alfredo    4096 Aug  3 10:22 uvicorn
+drwxrwxr-x   2 alfredo alfredo    4096 Aug  3 10:22 uvicorn-0.18.2.dist-info
+drwxrwxr-x   4 alfredo alfredo    4096 Aug  3 10:22 vidgear
+drwxrwxr-x   2 alfredo alfredo    4096 Aug  3 10:22 vidgear-0.2.6.dist-info
+drwxrwxr-x   3 alfredo alfredo    4096 Aug  3 10:22 xdg
+-rw-rw-r--   1 alfredo alfredo     758 Aug  3 10:22 LICENCE
+drwxrwxr-x   2 alfredo alfredo    4096 Aug  3 10:22 xdg-5.1.1.dist-info
+drwxrwxr-x   7 alfredo alfredo    4096 Aug  3 10:22 yt_dlp
+drwxrwxr-x   2 alfredo alfredo    4096 Aug  3 10:23 yt_dlp-2022.7.18.dist-info
+-rw-rw-r--   1 alfredo alfredo    8029 Aug  3 10:23 zipp.py
+drwxrwxr-x 207 alfredo alfredo   12288 Aug  3 10:23 .
+drwxrwxr-x   2 alfredo alfredo    4096 Aug  3 10:23 __pycache__
+drwxrwxr-x   2 alfredo alfredo    4096 Aug  3 10:23 zipp-3.8.1.dist-info

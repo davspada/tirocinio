@@ -15,6 +15,7 @@ paths_list = []
 for i in results:
     paths_list.append(str(i[5]))
 
+#deletes frames and folders in localmachine
 for folder in paths_list:
     try:
         shutil.rmtree(folder)
@@ -25,5 +26,5 @@ for folder in paths_list:
 query2 = f"DELETE FROM camera_api_data WHERE timestamp < NOW() -INTERVAL '{days} days'"
 cur.execute(query2)
 
-
+#saves changes to db
 conn.commit()
