@@ -178,7 +178,7 @@ def create_video(request, name, interval):
     f = open('paths.txt', 'w+')
     for i in requested_data.iterator():
         f.write("file '../cameraApi/media/"+i[0]+i[1]+"' \n")
-        f.write("duration 0.04 \n") #number can be parametric
+        f.write("duration 0.20 \n") #number can be parametric
     f.close
     #writes video with 
     video_name = '{name}-{interval}.mp4'.format(name= name, interval = interval)

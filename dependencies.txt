@@ -4,7 +4,7 @@ onvif
 python-onvif-zeep
 OpenCV
 opencv-python
-vidgear
+vidgear     0.2.6
 django
 djangorestframework
 psycopg2
@@ -12,3 +12,61 @@ ffmpeg
 ffmpeg_python
 pynmea2 
 SISTEMA CHE REGISTRA IN UTC
+
+
+python3-opencv/jammy,now 4.5.4+dfsg-9ubuntu4 amd64 [installed]
+
+postgresql-14/jammy-updates,now 14.4-0ubuntu0.22.04.1 amd64 [installed,automatic]
+postgresql-client-14/jammy-updates,now 14.4-0ubuntu0.22.04.1 amd64 [installed,automatic]
+postgresql-client-common/jammy,jammy,now 238 all [installed,automatic]
+postgresql-common/jammy,jammy,now 238 all [installed,automatic]
+postgresql/jammy,jammy,now 14+238 all [installed]
+
+libopencv-calib3d4.5d/jammy,now 4.5.4+dfsg-9ubuntu4 amd64 [installed,automatic]
+libopencv-contrib4.5d/jammy,now 4.5.4+dfsg-9ubuntu4 amd64 [installed,automatic]
+libopencv-core4.5d/jammy,now 4.5.4+dfsg-9ubuntu4 amd64 [installed,automatic]
+libopencv-dnn4.5d/jammy,now 4.5.4+dfsg-9ubuntu4 amd64 [installed,automatic]
+libopencv-features2d4.5d/jammy,now 4.5.4+dfsg-9ubuntu4 amd64 [installed,automatic]
+libopencv-flann4.5d/jammy,now 4.5.4+dfsg-9ubuntu4 amd64 [installed,automatic]
+libopencv-highgui4.5d/jammy,now 4.5.4+dfsg-9ubuntu4 amd64 [installed,automatic]
+libopencv-imgcodecs4.5d/jammy,now 4.5.4+dfsg-9ubuntu4 amd64 [installed,automatic]
+libopencv-imgproc4.5d/jammy,now 4.5.4+dfsg-9ubuntu4 amd64 [installed,automatic]
+libopencv-ml4.5d/jammy,now 4.5.4+dfsg-9ubuntu4 amd64 [installed,automatic]
+libopencv-objdetect4.5d/jammy,now 4.5.4+dfsg-9ubuntu4 amd64 [installed,automatic]
+libopencv-photo4.5d/jammy,now 4.5.4+dfsg-9ubuntu4 amd64 [installed,automatic]
+libopencv-shape4.5d/jammy,now 4.5.4+dfsg-9ubuntu4 amd64 [installed,automatic]
+libopencv-stitching4.5d/jammy,now 4.5.4+dfsg-9ubuntu4 amd64 [installed,automatic]
+libopencv-video4.5d/jammy,now 4.5.4+dfsg-9ubuntu4 amd64 [installed,automatic]
+libopencv-videoio4.5d/jammy,now 4.5.4+dfsg-9ubuntu4 amd64 [installed,automatic]
+libopencv-viz4.5d/jammy,now 4.5.4+dfsg-9ubuntu4 amd64 [installed,automatic]
+
+
+
+
+installate da box
+
+-apt
+python3-pip/jammy,now 22.0.2+dfsg-1 all [installed]
+python3-opencv/jammy,now 4.5.4+dfsg-9ubuntu4 amd64 [installed]
+postgres 12 : {
+        sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list'
+        wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
+        sudo apt-get update
+        sudo apt-get -y install postgresql
+}
+
+
+
+-pip
+opencv-python          4.6.0.66
+requests               2.25.1
+onvif                  0.2.0
+onvif-zeep             0.2.12
+zeep                   4.1.0
+vidgear                0.2.6
+pynmea2                1.18.0
+psycopg2-binary        2.9.3
+Django                 4.1
+djangorestframework    3.13.1
+ffmpeg                 1.4
+ffmpeg-python          0.2.0
