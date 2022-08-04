@@ -39,7 +39,7 @@ def camera_process_func(queue, ip, port, user, password, Gps):
     gps_proc.start()
 
     #FPS = 1/TIMEOUT  --- 1 for 1fps / 0 for ALL / 0.5 for 2fps
-    TIMEOUT = 0.5
+    TIMEOUT = 0.2
     
     old_timestamp = time.time()
     #LOOP FOR STREAM
