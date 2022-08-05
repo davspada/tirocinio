@@ -36,7 +36,7 @@
     {% endif %}
     {% if videos %}
     <ul>
-        {% for video in videos %}
+        {% for video in page_obj %}
         <div class="gallery">
           <a target="_blank">
             <video src="{{video.path}}{{video.video}}">
@@ -48,4 +48,5 @@
     {% else %}
     <p>There are no videos in the system.</p>
   {% endif %}
+  {% include "pagination.html" %}
 {% endblock %}

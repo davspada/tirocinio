@@ -6,7 +6,7 @@
     margin: 5px;
     border: 1px solid #ccc;
     float: left;
-    width: 180px;
+    width: 300px;
   }
   
   div.gallery:hover {
@@ -85,14 +85,14 @@
     {% endif %}
     {% if frames %}
     <ul>
-        {% for frame in frames %}
+        {% for frame in page_obj %}
         <div class="gallery">
           <a target="_blank">
             <img src="{{frame.path}}{{frame.frame}}" alt="frame">
           </a>
           <div class="desc">TIMESTAMP : {{frame.timestamp}} - POSITION : {{frame.position}}</div>
         </div>
-
+        
         <!--
         <li>{{ frame.frame }}
           <img src="{{ frame.path }}{{ frame.frame }}">
@@ -104,4 +104,5 @@
     {% else %}
     <p>There are no frames for this camera or in this time interval in the system.</p>
   {% endif %}
+  {% include "pagination.html" %}
 {% endblock %}
