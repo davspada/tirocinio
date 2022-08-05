@@ -6,7 +6,7 @@
     margin: 5px;
     border: 1px solid #ccc;
     float: left;
-    width: 180px;
+    width: 300px;
   }
   
   div.gallery:hover {
@@ -92,7 +92,7 @@
     {% if frames %}
     <input type="button" value="Create video" onclick="goToVideoCreation()"/>
     <ul>
-        {% for frame in frames %}
+        {% for frame in page_obj %}
         <div class="gallery">
           <a target="_blank">
             <img src="{{frame.path}}{{frame.frame}}" alt="frame">
@@ -111,4 +111,5 @@
     {% else %}
     <p>There are no frames for this camera or in this time interval in the system.</p>
   {% endif %}
+  {% include "pagination.html" %}
 {% endblock %}

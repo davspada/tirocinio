@@ -2,6 +2,7 @@ from datetime import timedelta,datetime
 from importlib.resources import path
 import json
 import os
+import django
 from django.http import HttpResponse
 from django.shortcuts import redirect, render
 from numpy import integer
@@ -20,6 +21,7 @@ from rest_framework.renderers import TemplateHTMLRenderer
 from rest_framework.response import Response
 from rest_framework.views import APIView
 import ffmpeg
+from django.core.paginator import *
 
 class DataListApiView(APIView):
     # add permission to check if user is authenticated
@@ -154,7 +156,18 @@ class CameraList(APIView):
 def camera_frames(request, name):
     requested_data = Data.objects.all().filter(name = name).order_by('timestamp')
     #print(requested_data)
-    return render(request, 'camera_frames.html', context={'frames': requested_data, 'name': name})
+    page_num = request.GET.get('page', 1)
+    paginator = Paginator(requested_data, 50) # 50 per page
+
+    try:
+        page_obj = paginator.page(page_num)
+    except PageNotAnInteger:
+        # if page is not an integer, deliver the first page
+        page_obj = paginator.page(1)
+    except EmptyPage:
+        # if the page is out of range, deliver the last page
+        page_obj = paginator.page(paginator.num_pages)
+    return render(request, 'camera_frames.html', context={ 'page_obj' : page_obj ,'frames': requested_data, 'name': name})
 
 #web - show all frames for a given camera in a given interval
 def camera_frames_interval(request, name, interval):
@@ -163,7 +176,18 @@ def camera_frames_interval(request, name, interval):
     sdate = interv[0].replace("_"," ")
     edate = interv[1].replace("_"," ")
     requested_data = Data.objects.all().filter(name = name, timestamp__gte = sdate, timestamp__lte=edate).order_by('timestamp')
-    return render(request, 'interval_frames.html', context={'frames': requested_data, 'name': name, 'data1': sdate, 'data2': edate})
+    page_num = request.GET.get('page', 1)
+    paginator = Paginator(requested_data, 50) # 50 per page
+
+    try:
+        page_obj = paginator.page(page_num)
+    except PageNotAnInteger:
+        # if page is not an integer, deliver the first page
+        page_obj = paginator.page(1)
+    except EmptyPage:
+        # if the page is out of range, deliver the last page
+        page_obj = paginator.page(paginator.num_pages)
+    return render(request, 'interval_frames.html', context={'page_obj' : page_obj , 'frames': requested_data, 'name': name, 'data1': sdate, 'data2': edate})
 
 #web - create a video with the shown frames given the camera and interval
 def create_video(request, name, interval):
@@ -192,9 +216,31 @@ def create_video(request, name, interval):
 def get_all_videos(request):
     requested_data = Video.objects.all()
     camera_list = Video.objects.values('name').distinct()
-    return render(request, 'video_gallery.html', context={'videos' : requested_data, 'cameras' : camera_list})
+    page_num = request.GET.get('page', 1)
+    paginator = Paginator(requested_data, 5) # 5 per page
+
+    try:
+        page_obj = paginator.page(page_num)
+    except PageNotAnInteger:
+        # if page is not an integer, deliver the first page
+        page_obj = paginator.page(1)
+    except EmptyPage:
+        # if the page is out of range, deliver the last page
+        page_obj = paginator.page(paginator.num_pages)
+    return render(request, 'video_gallery.html', context={'page_obj' : page_obj ,'videos' : requested_data, 'cameras' : camera_list})
 
 #web - video gallery for a given camera
 def get_camera_videos(request, name):
     requested_data = Video.objects.all().filter(name = name)
-    return render(request, 'video_gallery.html', context={'videos' : requested_data})
+    page_num = request.GET.get('page', 1)
+    paginator = Paginator(requested_data, 5) # 5 per page
+
+    try:
+        page_obj = paginator.page(page_num)
+    except PageNotAnInteger:
+        # if page is not an integer, deliver the first page
+        page_obj = paginator.page(1)
+    except EmptyPage:
+        # if the page is out of range, deliver the last page
+        page_obj = paginator.page(paginator.num_pages)
+    return render(request, 'video_gallery.html', context={'page_obj' : page_obj , 'videos' : requested_data})
