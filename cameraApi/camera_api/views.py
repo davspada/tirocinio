@@ -207,7 +207,12 @@ def create_video(request, name, interval):
     #writes video with 
     video_name = '{name}-{interval}.mp4'.format(name= name, interval = interval)
     os.makedirs('../cameraApi/media/videos/{name}/'.format(name= name),exist_ok=True)
-    ffmpeg.input('paths.txt',f='concat',safe=0).output('../cameraApi/media/videos/{name}/{video_name}'.format(name= name, video_name = video_name),c='libx264').run()
+    try:
+        ffmpeg.input('paths.txt',f='concat',safe=0).output('../cameraApi/media/videos/{name}/{video_name}'.format(name= name, video_name = video_name),c='libx264').run()
+    except ffmpeg.Error as e:
+        print(e.stdout)
+        return render(request, 'video_error.html', context={'error' : e , 'name' : name})
+    
     #creates db entry for the created video
     video_instance = Video.objects.create(name =name , path='/videos/{name}/'.format(name = name), video= video_name, time_interval= interval_db)
     return render(request, 'video_created.html', context={'name' : name})
