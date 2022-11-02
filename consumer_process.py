@@ -87,4 +87,4 @@ def process_data(queue, queue_post):
 
 #creo prima la stringa a partire dal timestamp + nome della cam
 #   ---> la uso per controllare il path se esiste o no
-#   ---> eventualmente la uso anche per il imwrite
+#   ---> la uso anche per il imwrite

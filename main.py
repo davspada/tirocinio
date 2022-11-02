@@ -11,13 +11,16 @@ camera_list = []
 
 populate_camera_list(camera_list)
 
+#choose the number for the consumer processes
 def choose_cons_number():
     print("inserire il numero di consumatori :")
     cons = int(input())
     return cons
 
+#instance of the gps simulator
 gpsubj = GPSSubject()
 
+#creates a process for every camera
 for camera in camera_list:
     #print("trying to access ---"+camera.ip+ camera.port+ camera.user+camera.passw)
     name = camera.ip.replace(".","")
