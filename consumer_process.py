@@ -7,10 +7,6 @@ from pathlib import Path
 import psycopg2
 import requests
 
-url = 'http://172.16.1.83:8000/camera/post_frame'
-username = 'davide'
-password = 'password'
-
 #connection to db
 conn = psycopg2.connect("dbname=framesdb user=dbuser host=localhost password=password")
 cur = conn.cursor()

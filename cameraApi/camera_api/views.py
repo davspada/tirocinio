@@ -96,7 +96,6 @@ class get_frames(APIView):
 
     def delete(self, request, *args, **kwargs):
         reqname = request.data.get('name')
-        #data1 = request.data.get('ts1')
         data2 = request.data.get('ts2')
         requested_data = Data.objects.all().filter(name = reqname, timestamp__lte=data2 )
 
@@ -115,7 +114,6 @@ class get_frame(APIView):
         data2 = datetime.strptime(request.data.get('ts2'),"%Y/%m/%d %H:%M:%S")
         print(data1, data2)
         lista=[]
-        #requested_data = Data.objects.all().filter(name = reqname, timestamp__gte = data1, timestamp__lte=data2 ).order_by('timestamp').iterator()
         while data1 < data2:
             data1.strftime("%m/%d/%Y-%H:%M:%-S")
             data2.strftime("%m/%d/%Y-%H:%M:%-S")
