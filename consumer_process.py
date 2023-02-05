@@ -7,22 +7,16 @@ from pathlib import Path
 import psycopg2
 import requests
 
-url = 'http://172.16.1.83:8000/camera/post_frame'
-username = 'davide'
-password = 'password'
-
 #connection to db
 conn = psycopg2.connect("dbname=framesdb user=dbuser host=localhost password=password")
 cur = conn.cursor()
 
 #username e password NON PIU' NECESSARI
 class Post_data:
-  def __init__(self, filename,pathstring, timestamp, position, username, password, name):
+  def __init__(self, filename,pathstring, timestamp, position, name):
     self.filename = filename
     self.pathstring = pathstring
     self.timestamp = timestamp
-    self.username = username
-    self.password = password
     self.position = position
     self.name = name
 
@@ -78,7 +72,7 @@ def process_data(queue, queue_post):
             cv2.imwrite(filenameandpath, rframe)
 
             #puts data package in queue for storing in database
-            post_data = Post_data(filename, pathstring_db, ts, position, username, password, fname)
+            post_data = Post_data(filename, pathstring_db, ts, position, fname)
             queue_post.put(post_data)
             
 

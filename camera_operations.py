@@ -20,14 +20,14 @@ def populate_camera_list(cam_list):
             cam_list.append(cam)
 
 #necessary for the link creation, as the program uses it
-def appendCredencials(pre_uri, username, password, ip):
+def appendCredencials(username, password, ip):
     return 'rtsp://'+username+':'+password+'@'+ip
 
 #connects to camera via Onvif
 def connectCamera(ip, port, user, passw):
     cam = ONVIFCamera(ip,port, user, passw)
-    #resp = cam.devicemgmt.GetHostname()
     resp = cam.devicemgmt.GetDeviceInformation()
+    #for debug
     #print('Connected to cam : ' +ip+' - Hostname : '+str(resp['SerialNumber']))
     name = str(resp['SerialNumber'])
     return cam, name
@@ -39,10 +39,10 @@ def getStreamLink(ip, port, user, passw):
     media_profiles = mediaService.GetProfiles()
     #print(media_profiles)
     token = media_profiles[0].token
+    #if the uri is needed to create the stream link
     uri = mediaService.GetStreamUri({'StreamSetup':{'Stream':'RTP-Unicast','Transport':'UDP'},'ProfileToken':token})
-    prefactor_uri = uri['Uri']
-    #print(prefactor_uri)
-    final_uri = appendCredencials(prefactor_uri,user,passw,ip)
+    print(uri)
+    final_uri = appendCredencials(user,passw,ip)
     #print('Stream link : '+final_uri)
     return final_uri, name
 

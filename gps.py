@@ -28,9 +28,8 @@ def get_gps_data(subject : GPSSubject):
                     splitted_GLL = splitted_data[2]#.split(',')
 
                     msg = pynmea2.parse(splitted_GLL)
-                    #self.position = msg.lat+msg.lat_dir+msg.lon+msg.lon_dir
                     subject.set_position(msg.lat+msg.lat_dir+msg.lon+msg.lon_dir)
-                    #print(subject.get_position())
+
             except socket.error as e:
                 print(e)
             finally:
